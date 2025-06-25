@@ -7,6 +7,8 @@ const navLinks = [
   { name: "Services", href: "/services" },
   { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
+  { name: "Maternity PhotoShoot", href: "/maternity" },
+  { name: "Baby PhotoShoot", href: "/babyphotoshoot" },
 ];
 
 export default function Header() {
