@@ -13,7 +13,7 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <header className="w-full flex items-center justify-between px-6 py-4 shadow-md bg-white sticky top-0 z-50">
+    <header className="fixed top-0 left-0 w-full z-30 bg-transparent flex items-center justify-between px-10 py-5 transition-all">
       <Link href="/">
         <Image
           src="/images/Lens Teaser Final Logo (1).png"
@@ -25,10 +25,13 @@ export default function Header() {
         />
       </Link>
       <nav>
-        <ul className="flex gap-8 text-base font-medium">
+        <ul className="flex gap-10 text-lg font-semibold">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <Link href={link.href} className="text-[#171717] hover:text-[#b48b3c] transition-colors">
+              <Link
+                href={link.href}
+                className="text-white hover:text-[#b48b3c] transition-colors duration-200 px-2 py-1 rounded"
+              >
                 {link.name}
               </Link>
             </li>
