@@ -5,17 +5,19 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import GradientButton from './components/GradientButton';
+import { Instagram, Facebook } from 'lucide-react';
+import Footer from './components/Footer';
 
+// Replace galleryImages with real images
 const galleryImages = [
-  '/images/sample1.jpg',
-  '/images/sample2.jpg',
-  '/images/sample3.jpg',
-  '/images/sample1.jpg',
-  '/images/sample1.jpg',
-  '/images/sample1.jpg',
-  '/images/sample1.jpg',
-  '/images/sample1.jpg',
- 
+  { src: '/images/maternity1.jpg', alt: 'Maternity Shoot 1' },
+  { src: '/images/maternity2.jpg', alt: 'Maternity Shoot 2' },
+  { src: '/images/maternity3.jpg', alt: 'Maternity Shoot 3' },
+  { src: '/images/maternity4.jpg', alt: 'Maternity Shoot 4' },
+  { src: '/images/baby1.jpg', alt: 'Baby Shoot 1' },
+  { src: '/images/baby2.jpg', alt: 'Baby Shoot 2' },
+  { src: '/images/baby3.jpg', alt: 'Baby Shoot 3' },
+  { src: '/images/baby4.jpg', alt: 'Baby Shoot 4' },
 ];
 
 // Dynamically import ReactPlayer with no SSR
@@ -94,7 +96,7 @@ export default function Home() {
           <div className="relative h-[300px] sm:h-[400px] md:h-[500px]">
             <div className="absolute bottom-[-1rem] sm:bottom-[-2rem] left-0 w-full h-full">
               <Image
-                src="/images/Bride001.jpg"
+                src="/images/Maternity_2.jpg"
                 alt="Bride Portrait"
                 fill
                 className="object-cover rounded-lg"
@@ -116,7 +118,7 @@ export default function Home() {
           <div className="relative h-[300px] sm:h-[400px] md:h-[500px]">
             <div className="absolute top-[-1rem] sm:top-[-2rem] right-0 w-full h-full">
               <Image
-                src="/images/Bride002.jpg"
+                src="/images/Baby0.jpg"
                 alt="Bride by the Mountain"
                 fill
                 className="object-cover rounded-lg"
@@ -192,14 +194,14 @@ export default function Home() {
           Featured Moments
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full">
-          {galleryImages.map((src, idx) => (
-            <div key={idx} className="overflow-hidden shadow-lg group">
+          {galleryImages.map((img, idx) => (
+            <div key={idx} className="overflow-hidden shadow-lg group rounded-xl">
               <Image
-                src={src}
-                alt={`Gallery image ${idx + 1}`}
+                src={img.src}
+                alt={img.alt}
                 width={500}
                 height={600}
-                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-xl"
               />
             </div>
           ))}
@@ -240,41 +242,27 @@ export default function Home() {
         
       </section>
 
-        {/*Footer Images */}
-        <section className="w-full bg-white text-white text-center">
-  <div className="relative w-full min-h-[300px] sm:min-h-[500px] md:min-h-[700px] lg:min-h-[1000px]">
-    <Image
-      src="/images/footer_image.jpg"
-      alt="Footer"
-      fill
-      priority
-      className="object-cover"
-    />
-  </div>
-</section>
-
-      {/* About/Editorial Section */}
-      <section className="w-full py-16 sm:py-24 bg-gradient-to-b from-[#232323] via-[#2d2d2d] to-[#232323] text-white text-center px-2 sm:px-4">
-        <div className="max-w-3xl mx-auto px-2 sm:px-4">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6 tracking-tight">
-            Our Philosophy
-          </h3>
-          <p className="text-base sm:text-lg md:text-xl font-light mb-2 sm:mb-4">
-            We believe every wedding and event is a unique story waiting to be told. Our approach is
-            modern, artistic, and unobtrusive—capturing genuine emotions and timeless moments that
-            you'll cherish forever.
-          </p>
-          <p className="text-sm sm:text-base md:text-lg text-gray-300">
-            With years of experience and a passion for storytelling, we document your day with a
-            fine-art editorial style, ensuring every detail is remembered.
-          </p>
+      {/* Modern Footer Image Section */}
+      <section className="relative w-full md:min-h-[500px] lg:min-h-[600px] flex items-center justify-center min-h-[300px] sm:min-h-[400px] overflow-hidden shadow-lg mt-0">
+        <Image
+          src="/images/footer_image.jpg"
+          alt="Footer_Image"
+          fill
+          className="object-cover object-center w-full h-full"
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#232323]/90 via-[#232323]/60 to-transparent" />
+        {/* Brand statement */}
+        <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 py-36 mt-60">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-4 text-center">Preserving Your Most Precious Moments</h2>
+          <p className="text-white/80 text-base sm:text-lg max-w-2xl text-center mb-6 font-light">From maternity to newborn and beyond, we create timeless memories with artistry, care, and passion. Let us tell your story through our lens.</p>
+          <Link href="/contact" className="bg-[#b48b3c] hover:bg-[#a07a2c] text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg transition-colors duration-300">Book a Session</Link>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="w-full py-6 sm:py-8 bg-[#232323] text-center text-gray-400 text-xs sm:text-sm border-t border-gray-800">
-        &copy; {new Date().getFullYear()} Lens Teasers Photography Studio. All rights reserved.
-      </footer>
+      {/* Modern Minimal Footer */}
+      <Footer />
+
     </main>
   );
 }
