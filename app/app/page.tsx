@@ -50,6 +50,8 @@ function VideoPlayer({ url }: { url: string }) {
 }
 
 export default function Home() {
+  const [visibleIndices, setVisibleIndices] = useState<number[]>([]);
+
   return (
     <main className="relative min-h-screen w-full bg-white text-white overflow-x-hidden">
       {/* Hero Section with Video */}
@@ -261,7 +263,7 @@ export default function Home() {
       </section>
 
       {/* Modern Minimal Footer */}
-      <Footer />
+      
 
     </main>
   );
