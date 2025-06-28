@@ -1,0 +1,47 @@
+'use client';
+
+import { Phone, MessageCircle } from 'lucide-react';
+
+export default function FloatingButtons() {
+  const phoneNumber = '+919520271285';
+  const whatsappNumber = '+919520271285';
+  const whatsappMessage = 'Hi! I would like to know more about your photography services.';
+
+  const handleCall = () => {
+    window.open(`tel:${phoneNumber}`, '_self');
+  };
+
+  const handleWhatsApp = () => {
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+      {/* Call Button */}
+      <button
+        onClick={handleCall}
+        className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 group"
+        aria-label="Call us"
+      >
+        <Phone className="w-6 h-6" />
+        <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-sm font-medium">
+          Call Us
+        </div>
+      </button>
+
+      {/* WhatsApp Button */}
+      <button
+        onClick={handleWhatsApp}
+        className="bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 group"
+        aria-label="WhatsApp us"
+      >
+        <MessageCircle className="w-6 h-6" />
+        <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-sm font-medium">
+          WhatsApp
+        </div>
+      </button>
+    </div>
+  );
+} 

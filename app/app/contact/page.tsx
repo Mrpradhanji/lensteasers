@@ -1,18 +1,328 @@
+'use client';
+
+import { useState } from 'react';
+import { Phone, Mail, MapPin, Clock, Send, Star, Heart, Camera } from 'lucide-react';
+
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
-    <main className="flex flex-col items-center justify-center min-h-[60vh] px-2 sm:px-4 py-8 sm:py-16">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#222]">Contact Us</h1>
-      <div className="mb-8 text-center text-[#444] text-sm sm:text-base">
-        <p>Phone: +91 9520271285</p>
-        <p>Email: lensteasers@gmail.com</p>
-        <p>Address: SE 87A, Jaipuria Sunrise Plaza, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh 201014</p>
+    <div className="min-h-screen bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6] relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-[#b48b3c]/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-[#e7d6c6]/30 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-[#b48b3c]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 right-1/3 w-28 h-28 bg-[#f3e7d9]/40 rounded-full blur-2xl"></div>
       </div>
-      <form className="flex flex-col gap-4 w-full max-w-md bg-[#f7f3ed] p-4 sm:p-8 rounded-lg shadow-sm border border-[#ececec]">
-        <input type="text" placeholder="Your Name" className="p-2 sm:p-3 rounded border border-[#ddd] text-sm sm:text-base" />
-        <input type="email" placeholder="Your Email" className="p-2 sm:p-3 rounded border border-[#ddd] text-sm sm:text-base" />
-        <textarea placeholder="Your Message" rows={4} className="p-2 sm:p-3 rounded border border-[#ddd] text-sm sm:text-base" />
-        <button type="submit" className="bg-[#b48b3c] text-white py-2 sm:py-3 rounded font-semibold hover:bg-[#a07a2c] transition-colors text-sm sm:text-base">Send Message</button>
-      </form>
-    </main>
+
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-r from-[#b48b3c] via-[#a07a2c] to-[#8b6b1c] text-white py-20 overflow-hidden">
+        {/* Hero Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}></div>
+        </div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="flex justify-center mb-6">
+            <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-2">
+              <Camera className="w-5 h-5" />
+              <span className="text-sm font-medium">Professional Photography</span>
+            </div>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+            Let's Create
+            <span className="block text-[#f3e7d9]">Magic Together</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed">
+            Ready to capture your precious moments? We're here to turn your vision into timeless memories.
+          </p>
+          
+          {/* Trust Indicators */}
+          <div className="flex justify-center items-center space-x-8 mt-8">
+            <div className="flex items-center space-x-2">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-[#f3e7d9] text-[#f3e7d9]" />
+                ))}
+              </div>
+              <span className="text-sm font-medium">5.0 Rating</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Heart className="w-4 h-4 text-[#f3e7d9]" />
+              <span className="text-sm font-medium">500+ Happy Clients</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Contact Information */}
+          <div className="space-y-10">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 py-2 mb-6">
+                <div className="w-2 h-2 bg-[#b48b3c] rounded-full"></div>
+                <span className="text-sm font-medium text-[#b48b3c]">Get In Touch</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#232323] mb-6 tracking-tight leading-tight">
+                Ready to Start Your
+                <span className="block text-[#b48b3c]">Photography Journey?</span>
+              </h2>
+              <p className="text-[#232323]/80 text-lg mb-8 font-light leading-relaxed">
+                We're passionate about capturing life's most precious moments. Let's discuss your vision and create something extraordinary together.
+              </p>
+            </div>
+
+            {/* Contact Cards */}
+            <div className="space-y-6">
+              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full transition-all duration-500 group-hover:scale-110"></div>
+                <div className="flex items-center space-x-6 relative z-10">
+                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <Phone className="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#232323] text-lg mb-1">Call Us</h3>
+                    <p className="text-[#232323]/80 text-lg font-medium">+91 9520271285</p>
+                    <p className="text-sm text-[#232323]/60">Available Mon-Sat, 9AM-7PM</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full transition-all duration-500 group-hover:scale-110"></div>
+                <div className="flex items-center space-x-6 relative z-10">
+                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <Mail className="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#232323] text-lg mb-1">Email Us</h3>
+                    <p className="text-[#232323]/80 text-lg font-medium">lensteasers@gmail.com</p>
+                    <p className="text-sm text-[#232323]/60">We'll respond within 24 hours</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full transition-all duration-500 group-hover:scale-110"></div>
+                <div className="flex items-center space-x-6 relative z-10">
+                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <MapPin className="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#232323] text-lg mb-1">Visit Our Studio</h3>
+                    <p className="text-[#232323]/80">SE 87A, Jaipuria Sunrise Plaza</p>
+                    <p className="text-[#232323]/80">Ahinsa Khand 1, Indirapuram</p>
+                    <p className="text-[#232323]/80">Ghaziabad, Uttar Pradesh 201014</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full transition-all duration-500 group-hover:scale-110"></div>
+                <div className="flex items-center space-x-6 relative z-10">
+                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <Clock className="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#232323] text-lg mb-1">Business Hours</h3>
+                    <p className="text-[#232323]/80 font-medium">Monday - Saturday</p>
+                    <p className="text-[#232323]/80 font-medium">9:00 AM - 7:00 PM</p>
+                    <p className="text-sm text-[#232323]/60">Sunday: By appointment only</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="bg-white border border-[#f3e7d9] rounded-3xl shadow-2xl p-10 relative overflow-hidden">
+            {/* Form Background Decoration */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#e7d6c6]/30 to-transparent rounded-tr-full"></div>
+            
+            <div className="relative z-10">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 py-2 mb-4">
+                  <Send className="w-4 h-4 text-[#b48b3c]" />
+                  <span className="text-sm font-medium text-[#b48b3c]">Send Message</span>
+                </div>
+                <h2 className="text-3xl font-bold text-[#232323] mb-2 tracking-tight">Tell Us About Your Vision</h2>
+                <p className="text-[#232323]/70">We'd love to hear about your photography dreams</p>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="group">
+                    <label htmlFor="name" className="block text-sm font-semibold text-[#232323] mb-3">
+                      Full Name *
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
+                        placeholder="Enter your full name"
+                      />
+                      <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+                  <div className="group">
+                    <label htmlFor="email" className="block text-sm font-semibold text-[#232323] mb-3">
+                      Email Address *
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
+                        placeholder="Enter your email"
+                      />
+                      <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="group">
+                    <label htmlFor="phone" className="block text-sm font-semibold text-[#232323] mb-3">
+                      Phone Number
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
+                        placeholder="Enter your phone number"
+                      />
+                      <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+                  <div className="group">
+                    <label htmlFor="subject" className="block text-sm font-semibold text-[#232323] mb-3">
+                      Subject *
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 appearance-none"
+                      >
+                        <option value="">Select a subject</option>
+                        <option value="booking">Photo Session Booking</option>
+                        <option value="pricing">Pricing Inquiry</option>
+                        <option value="portfolio">Portfolio Request</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="other">Other</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                        <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#b48b3c]"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="group">
+                  <label htmlFor="message" className="block text-sm font-semibold text-[#232323] mb-3">
+                    Your Message *
+                  </label>
+                  <div className="relative">
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={6}
+                      className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 resize-none bg-white group-hover:border-[#b48b3c]/50"
+                      placeholder="Tell us about your photography vision, preferred dates, or any questions you have..."
+                    />
+                    <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] hover:from-[#a07a2c] hover:to-[#8b6b1c] text-white py-5 px-8 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105 group"
+                >
+                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <span>Send Your Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {/* Map Section */}
+        <div className="mt-24">
+          <div className="bg-white border border-[#f3e7d9] rounded-3xl shadow-2xl p-10 relative overflow-hidden">
+            {/* Map Section Background Decoration */}
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-br-full"></div>
+            <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-[#e7d6c6]/30 to-transparent rounded-tl-full"></div>
+            
+            <div className="relative z-10 text-center">
+              <div className="inline-flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 py-2 mb-6">
+                <MapPin className="w-4 h-4 text-[#b48b3c]" />
+                <span className="text-sm font-medium text-[#b48b3c]">Studio Location</span>
+              </div>
+              <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Find Our Creative Studio</h2>
+              <p className="text-[#232323]/70 text-lg mb-8 max-w-2xl mx-auto">
+                Visit our professional studio where magic happens. We've created a comfortable and inspiring environment for your photography sessions.
+              </p>
+              
+              <div className="bg-gradient-to-br from-[#f9f6f2] to-[#f3e7d9] h-80 rounded-2xl flex items-center justify-center border-2 border-[#f3e7d9] relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#b48b3c]/5 to-transparent"></div>
+                <div className="text-center text-[#232323]/80 relative z-10">
+                  <div className="bg-white p-6 rounded-2xl shadow-lg inline-block mb-6">
+                    <MapPin className="w-12 h-12 mx-auto mb-4 text-[#b48b3c]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#232323] mb-2">SE 87A, Jaipuria Sunrise Plaza</h3>
+                  <p className="text-[#232323]/70 text-lg">Ahinsa Khand 1, Indirapuram</p>
+                  <p className="text-[#232323]/70 text-lg mb-4">Ghaziabad, Uttar Pradesh 201014</p>
+                  <div className="inline-flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 py-2">
+                    <span className="text-sm font-medium text-[#b48b3c]">Interactive map coming soon</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 } 
