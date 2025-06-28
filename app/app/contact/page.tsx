@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, Star, Heart, Camera } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Phone, Mail, MapPin, Clock, Send, Star, Heart, Camera, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { emailjsConfig } from '../config/emailjs';
 
 export default function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,17 +14,59 @@ export default function Contact() {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const result = await emailjs.sendForm(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        formRef.current!,
+        emailjsConfig.publicKey
+      );
+
+      if (result.status === 200) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    
+    // Map EmailJS field names to state properties
+    const fieldMapping: { [key: string]: string } = {
+      'user_name': 'name',
+      'user_email': 'email', 
+      'user_phone': 'phone',
+      'subject': 'subject',
+      'message': 'message'
+    };
+    
+    const stateField = fieldMapping[name] || name;
+    setFormData(prev => ({
+      ...prev,
+      [stateField]: value
+    }));
   };
 
   return (
@@ -171,8 +216,23 @@ export default function Contact() {
                 <h2 className="text-3xl font-bold text-[#232323] mb-2 tracking-tight">Tell Us About Your Vision</h2>
                 <p className="text-[#232323]/70">We'd love to hear about your photography dreams</p>
               </div>
+
+              {/* Success/Error Messages */}
+              {submitStatus === 'success' && (
+                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="text-green-800 font-medium">Thank you! Your message has been sent successfully. We'll get back to you soon!</span>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center space-x-3">
+                  <AlertCircle className="w-5 h-5 text-red-600" />
+                  <span className="text-red-800 font-medium">Oops! Something went wrong. Please try again or contact us directly.</span>
+                </div>
+              )}
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="group">
                     <label htmlFor="name" className="block text-sm font-semibold text-[#232323] mb-3">
@@ -182,11 +242,11 @@ export default function Contact() {
                       <input
                         type="text"
                         id="name"
-                        name="name"
+                        name="user_name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
+                        className="w-full px-4 py-4 border-2 text-black border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
                         placeholder="Enter your full name"
                       />
                       <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -200,11 +260,11 @@ export default function Contact() {
                       <input
                         type="email"
                         id="email"
-                        name="email"
+                        name="user_email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
+                        className="w-full px-4 text-black py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
                         placeholder="Enter your email"
                       />
                       <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -221,10 +281,10 @@ export default function Contact() {
                       <input
                         type="tel"
                         id="phone"
-                        name="phone"
+                        name="user_phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
+                        className="w-full px-4 text-black py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
                         placeholder="Enter your phone number"
                       />
                       <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -241,7 +301,7 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 appearance-none"
+                        className="w-full px-4 py-4 text-black border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 appearance-none"
                       >
                         <option value="">Select a subject</option>
                         <option value="booking">Photo Session Booking</option>
@@ -269,7 +329,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 resize-none bg-white group-hover:border-[#b48b3c]/50"
+                      className="w-full px-4 py-4 border-2 border-[#f3e7d9] text-black rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 resize-none bg-white group-hover:border-[#b48b3c]/50"
                       placeholder="Tell us about your photography vision, preferred dates, or any questions you have..."
                     />
                     <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -278,10 +338,20 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] hover:from-[#a07a2c] hover:to-[#8b6b1c] text-white py-5 px-8 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105 group"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] hover:from-[#a07a2c] hover:to-[#8b6b1c] disabled:from-gray-400 disabled:to-gray-500 text-white py-5 px-8 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105 group disabled:cursor-not-allowed disabled:transform-none"
                 >
-                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  <span>Send Your Message</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Sending Message...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                      <span>Send Your Message</span>
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -305,19 +375,47 @@ export default function Contact() {
                 Visit our professional studio where magic happens. We've created a comfortable and inspiring environment for your photography sessions.
               </p>
               
-              <div className="bg-gradient-to-br from-[#f9f6f2] to-[#f3e7d9] h-80 rounded-2xl flex items-center justify-center border-2 border-[#f3e7d9] relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#b48b3c]/5 to-transparent"></div>
-                <div className="text-center text-[#232323]/80 relative z-10">
-                  <div className="bg-white p-6 rounded-2xl shadow-lg inline-block mb-6">
-                    <MapPin className="w-12 h-12 mx-auto mb-4 text-[#b48b3c]" />
+              {/* Google Maps Embed */}
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-lg border-2 border-[#f3e7d9]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.619502324454!2d77.37340887601667!3d28.64116388368785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfbf75094f5cd%3A0xdbe0e296258d838!2sLens%20Teasers%20Professional%20Baby%20and%20Maternity%20Photography%20Studio!5e0!3m2!1sen!2sin!4v1751116219255!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="LensTeasers Photography Studio Location"
+                  className="rounded-2xl"
+                ></iframe>
+                
+                {/* Map Overlay with Studio Info */}
+                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg max-w-xs">
+                  <div className="flex items-center space-x-3 mb-2">
+                    <div className="w-8 h-8 bg-[#b48b3c] rounded-full flex items-center justify-center">
+                      <MapPin className="w-4 h-4 text-white" />
+                    </div>
+                    <h3 className="font-bold text-[#232323] text-sm">LensTeasers Studio</h3>
                   </div>
-                  <h3 className="text-2xl font-bold text-[#232323] mb-2">SE 87A, Jaipuria Sunrise Plaza</h3>
-                  <p className="text-[#232323]/70 text-lg">Ahinsa Khand 1, Indirapuram</p>
-                  <p className="text-[#232323]/70 text-lg mb-4">Ghaziabad, Uttar Pradesh 201014</p>
-                  <div className="inline-flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 py-2">
-                    <span className="text-sm font-medium text-[#b48b3c]">Interactive map coming soon</span>
-                  </div>
+                  <p className="text-[#232323]/80 text-xs mb-1">SE 87A, Jaipuria Sunrise Plaza</p>
+                  <p className="text-[#232323]/80 text-xs mb-1">Ahinsa Khand 1, Indirapuram</p>
+                  <p className="text-[#232323]/80 text-xs">Ghaziabad, UP 201014</p>
                 </div>
+              </div>
+              
+              {/* Directions Button */}
+              <div className="mt-6">
+                <a
+                  href="https://maps.google.com/?q=Lens+Teasers+Professional+Baby+and+Maternity+Photography+Studio+SE+87A+Jaipuria+Sunrise+Plaza+Ahinsa+Khand+1+Indirapuram+Ghaziabad+UP+201014"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 bg-[#b48b3c] hover:bg-[#a07a2c] text-white px-6 py-3 rounded-full font-semibold transition-colors duration-300 shadow-lg hover:shadow-xl"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <span>Get Directions</span>
+                </a>
               </div>
             </div>
           </div>
