@@ -24,3 +24,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Utility classes for About page */
+.glass-card {
+  @apply bg-white/60 backdrop-blur-2xl rounded-3xl shadow-2xl border border-[#b48b3c]/10;
+}
+.glass-section {
+  @apply bg-white/50 backdrop-blur-xl rounded-3xl shadow-xl;
+}
+.gold-gradient {
+  @apply bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6];
+}
+.gold-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-[#b48b3c] via-[#e7d6c6] to-[#232323];
+}
+.card-hover {
+  @apply hover:scale-105 transition-transform duration-300;
+}
