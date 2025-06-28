@@ -6,16 +6,27 @@ import { useState, useEffect } from "react";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
   { name: "Gallery", href: "/gallery" },
-  { name: "Contact", href: "/contact" },
   { name: "Maternity PhotoShoot", href: "/maternity" },
   { name: "Baby PhotoShoot", href: "/babyphotoshoot" },
+  { name: "Contact", href: "/contact" },
+];
+
+const serviceLinks = [
+  { name: "All Services", href: "/services" },
+  { name: "Wedding Photography", href: "/services/wedding-photography" },
+  { name: "Pre-Wedding Photoshoot", href: "/services/pre-wedding-photography" },
+  { name: "Birthday Event Photography", href: "/services/birthday-events" },
+  { name: "Maternity Shoot", href: "/maternity" },
+  { name: "Baby & Kids Photography", href: "/babyphotoshoot" },
+  { name: "Product Photography", href: "/services/product-photography" },
+  { name: "Cinematography", href: "/services/cinematography" },
 ];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
@@ -56,6 +67,41 @@ export default function Header() {
               <span className="absolute left-1/2 -bottom-1 w-0 group-hover:w-3/4 h-0.5 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300" style={{ transform: 'translateX(-50%)' }}></span>
             </Link>
           ))}
+          
+          {/* Services Dropdown */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setServicesDropdownOpen(true)}
+            onMouseLeave={() => setServicesDropdownOpen(false)}
+          >
+            <button className="relative uppercase tracking-widest text-sm font-semibold text-[#232323] hover:text-[#b48b3c] px-2 py-1 transition-colors duration-200 group flex items-center gap-1">
+              Services
+              <svg 
+                className={`w-4 h-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`} 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+              <span className="absolute left-1/2 -bottom-1 w-0 group-hover:w-3/4 h-0.5 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300" style={{ transform: 'translateX(-50%)' }}></span>
+            </button>
+            
+            {/* Dropdown Menu */}
+            <div className={`absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl rounded-lg shadow-2xl border border-gray-200 transition-all duration-300 ${servicesDropdownOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+              <div className="py-2">
+                {serviceLinks.map((service, index) => (
+                  <Link
+                    key={service.name}
+                    href={service.href}
+                    className={`block px-4 py-3 text-sm text-[#232323] hover:bg-[#f9f6f2] hover:text-[#b48b3c] transition-colors duration-200 ${index === 0 ? 'border-b border-gray-200 font-semibold' : ''}`}
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </nav>
 
         {/* Hamburger for mobile */}
@@ -90,6 +136,29 @@ export default function Header() {
               </Link>
             </li>
           ))}
+          
+          {/* Mobile Services Section */}
+          <li className="text-center">
+            <div className="mb-4">
+              <span className="relative px-4 py-2 text-[#b48b3c] font-bold">
+                Services
+              </span>
+            </div>
+            <ul className="flex flex-col gap-4 text-lg font-normal">
+              {serviceLinks.map((service) => (
+                <li key={service.name}>
+                  <Link
+                    href={service.href}
+                    className="relative px-4 py-2 hover:text-[#b48b3c] transition-colors duration-200 group"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {service.name}
+                    <span className="absolute left-1/2 -bottom-1 w-0 group-hover:w-3/4 h-0.5 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300" style={{ transform: 'translateX(-50%)' }}></span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>
