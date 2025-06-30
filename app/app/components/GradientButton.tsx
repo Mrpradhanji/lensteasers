@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 export default function GradientButton({ label = "Let's get started", onClick }: { label?: string; onClick?: () => void }) {
   return (
@@ -29,5 +30,32 @@ export default function GradientButton({ label = "Let's get started", onClick }:
         </svg>
       </span>
     </button>
+  );
+}
+
+// Modern shimmer effect loader for image placeholders
+export function ShimmerLoader({ className = '' }: { className?: string }) {
+  return (
+    <LazyMotion features={domAnimation}>
+      <m.div
+        className={`relative overflow-hidden bg-gray-200 rounded-xl w-full h-full ${className}`}
+        style={{ minHeight: 100 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <m.div
+          className="absolute inset-0 w-full h-full"
+          initial={{ x: '-100%' }}
+          animate={{ x: '100%' }}
+          transition={{ repeat: Infinity, duration: 1.2, ease: 'linear' }}
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%)',
+          }}
+        />
+      </m.div>
+    </LazyMotion>
   );
 }

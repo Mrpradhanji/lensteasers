@@ -1,6 +1,8 @@
 'use client';
 
+import React from 'react';
 import { Phone, MessageCircle } from 'lucide-react';
+import { m } from 'framer-motion';
 
 export default function FloatingButtons() {
   const phoneNumber = '+919520271285';
@@ -20,28 +22,34 @@ export default function FloatingButtons() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
       {/* Call Button */}
-      <button
+      <m.button
         onClick={handleCall}
         className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 group"
         aria-label="Call us"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: 'spring', stiffness: 300 }}
       >
         <Phone className="w-6 h-6" />
         <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-sm font-medium">
           Call Us
         </div>
-      </button>
+      </m.button>
 
       {/* WhatsApp Button */}
-      <button
+      <m.button
         onClick={handleWhatsApp}
         className="bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 group"
         aria-label="WhatsApp us"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: 'spring', stiffness: 300 }}
       >
         <MessageCircle className="w-6 h-6" />
         <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-sm font-medium">
           WhatsApp
         </div>
-      </button>
+      </m.button>
     </div>
   );
 } 

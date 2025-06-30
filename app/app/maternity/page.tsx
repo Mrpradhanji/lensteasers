@@ -3,6 +3,9 @@
 import { Heart, Camera, Star, Users, Phone, ArrowRight, Check } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { useState } from 'react';
+import { ShimmerLoader } from '../components/GradientButton';
 
 const maternityPackages = [
   {
@@ -89,6 +92,12 @@ const testimonials = [
 ];
 
 export default function Maternity() {
+  const [imageLoaded, setImageLoaded] = useState<{ [src: string]: boolean }>({});
+
+  const handleImageLoad = (src: string) => {
+    setImageLoaded((prev) => ({ ...prev, [src]: true }));
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6] relative overflow-hidden">
       {/* Decorative Background Elements */}
@@ -193,13 +202,23 @@ export default function Maternity() {
             {galleryImages.map((image, index) => (
               <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
                 <div className="relative h-64 sm:h-80">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
+                  <LazyMotion features={domAnimation}>
+                    <m.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: imageLoaded[image.src] ? 1 : 0 }}
+                      transition={{ duration: 1.5 }}
+                      className="w-full h-full"
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        onLoadingComplete={() => handleImageLoad(image.src)}
+                        loading="lazy"
+                      />
+                    </m.div>
+                  </LazyMotion>
                 </div>
               </div>
             ))}
@@ -268,12 +287,23 @@ export default function Maternity() {
                 <p className="text-[#232323]/80 mb-6 italic">&quot;{testimonial.text}&quot;</p>
                 <div className="flex items-center space-x-3">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                    />
+                    <LazyMotion features={domAnimation}>
+                      <m.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: imageLoaded[testimonial.image] ? 1 : 0 }}
+                        transition={{ duration: 1.5 }}
+                        className="w-full h-full"
+                      >
+                        <Image
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          fill
+                          className="object-cover"
+                          onLoadingComplete={() => handleImageLoad(testimonial.image)}
+                          loading="lazy"
+                        />
+                      </m.div>
+                    </LazyMotion>
                   </div>
                   <div>
                     <div className="font-semibold text-[#232323]">{testimonial.name}</div>

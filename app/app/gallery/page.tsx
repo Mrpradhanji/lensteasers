@@ -2,6 +2,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Camera, X, ChevronLeft, ChevronRight, Heart, Share2, Sparkles, Eye, Download } from 'lucide-react';
 import Image from 'next/image';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { ShimmerLoader } from '../components/GradientButton';
 
 // Gallery data with categories
 const galleryData = [
@@ -28,6 +30,7 @@ export default function Gallery() {
   const [isLoading, setIsLoading] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'masonry'>('grid');
   const galleryRef = useRef<HTMLDivElement>(null);
+  const [imageLoaded, setImageLoaded] = useState<{ [src: string]: boolean }>({});
 
   const filteredImages = selectedCategory === 'all' 
     ? galleryData 
@@ -35,6 +38,10 @@ export default function Gallery() {
 
   const handleImageError = (src: string) => {
     setImageErrors(prev => ({ ...prev, [src]: true }));
+  };
+
+  const handleImageLoad = (src: string) => {
+    setImageLoaded((prev) => ({ ...prev, [src]: true }));
   };
 
   const openModal = async (image: typeof galleryData[0]) => {
@@ -193,23 +200,34 @@ export default function Gallery() {
                   animationFillMode: 'both'
                 }}
               >
-                {imageErrors[image.src] ? (
-                  <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                    <div className="text-center text-gray-500">
-                      <Camera className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                      <p className="text-lg font-medium">{image.title}</p>
-                    </div>
-                  </div>
-                ) : (
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full aspect-[4/5] object-cover group-hover:scale-110 transition-transform duration-700"
-                    width={500}
-                    height={625}
-                    onError={() => handleImageError(image.src)}
-                  />
-                )}
+                <LazyMotion features={domAnimation}>
+                  <m.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: imageLoaded[image.src] ? 1 : 0 }}
+                    transition={{ duration: 1.5 }}
+                    className="w-full h-full"
+                  >
+                    {imageErrors[image.src] ? (
+                      <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                        <div className="text-center text-gray-500">
+                          <Camera className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                          <p className="text-lg font-medium">{image.title}</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full aspect-[4/5] object-cover group-hover:scale-110 transition-transform duration-700"
+                        width={500}
+                        height={625}
+                        onError={() => handleImageError(image.src)}
+                        onLoadingComplete={() => handleImageLoad(image.src)}
+                        loading="lazy"
+                      />
+                    )}
+                  </m.div>
+                </LazyMotion>
                 
                 {/* Modern Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
@@ -238,9 +256,9 @@ export default function Gallery() {
                     <Download className="w-4 h-4 text-gray-700" />
                   </button>
                 </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
           
           {filteredImages.length === 0 && (
             <div className="text-center py-20">
@@ -295,13 +313,23 @@ export default function Gallery() {
                   </div>
                 </div>
               ) : (
-                <Image
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
-                  className="w-full rounded-3xl shadow-2xl"
-                  width={1200}
-                  height={1500}
-                />
+                <LazyMotion features={domAnimation}>
+                  <m.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: imageLoaded[selectedImage.src] ? 1 : 0 }}
+                    transition={{ duration: 1.5 }}
+                    className="w-full h-full"
+                  >
+                    <Image
+                      src={selectedImage.src}
+                      alt={selectedImage.alt}
+                      className="w-full rounded-3xl shadow-2xl"
+                      width={1200}
+                      height={1500}
+                      onLoadingComplete={() => handleImageLoad(selectedImage.src)}
+                    />
+                  </m.div>
+                </LazyMotion>
               )}
             </div>
 

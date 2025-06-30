@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Instagram, Linkedin, ArrowUp, Camera, Users, Award, Heart } from 'lucide-react';
 import Image from 'next/image';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { ShimmerLoader } from '../components/GradientButton';
 
 const studioImages = [
   { src: '/images/Maternity_Home.jpg', alt: 'Studio Maternity Session' },
@@ -59,6 +61,7 @@ export default function About() {
   const [modalImg, setModalImg] = useState<{ src: string; alt: string } | null>(null);
   const [showScroll, setShowScroll] = useState(false);
   const [imageErrors, setImageErrors] = useState<{[key: string]: boolean}>({});
+  const [imageLoaded, setImageLoaded] = useState<{ [src: string]: boolean }>({});
   const modalRef = useRef<HTMLDivElement>(null);
   const gridRefs = useRef<(HTMLDivElement | null)[]>([]);
   const teamRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -70,8 +73,7 @@ export default function About() {
   };
 
   const handleImageLoad = (src: string) => {
-    console.log('Image loaded successfully:', src);
-    console.log('Full image path:', window.location.origin + src);
+    setImageLoaded((prev) => ({ ...prev, [src]: true }));
   };
 
   useEffect(() => {
@@ -140,23 +142,32 @@ export default function About() {
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {studioImages.map((img, idx) => (
                 <div key={idx} className={`relative overflow-hidden rounded-2xl shadow-xl ${idx === 1 ? 'col-span-2' : ''}`}>
-                  {imageErrors[img.src] ? (
-                    <div className="w-full h-48 sm:h-64 bg-gray-200 flex items-center justify-center">
-                      <Camera className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2" />
-                      <p className="text-xs text-center">{img.alt}</p>
-                    </div>
-                  ) : (
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={400}
-                      height={256}
-                      className="object-cover w-full h-48 sm:h-64 hover:scale-105 transition-transform duration-500"
-                      onError={() => handleImageError(img.src)}
-                      onLoadingComplete={() => handleImageLoad(img.src)}
-                      priority={idx === 0}
-                    />
-                  )}
+                  <LazyMotion features={domAnimation}>
+                    <m.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: imageLoaded[img.src] ? 1 : 0 }}
+                      transition={{ duration: 1.5 }}
+                      className="w-full h-full"
+                    >
+                      {imageErrors[img.src] ? (
+                        <div className="w-full h-48 sm:h-64 bg-gray-200 flex items-center justify-center">
+                          <Camera className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2" />
+                          <p className="text-xs text-center">{img.alt}</p>
+                        </div>
+                      ) : (
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={400}
+                          height={256}
+                          className="object-cover w-full h-48 sm:h-64 hover:scale-105 transition-transform duration-500"
+                          onError={() => handleImageError(img.src)}
+                          onLoadingComplete={() => handleImageLoad(img.src)}
+                          priority={idx === 0}
+                        />
+                      )}
+                    </m.div>
+                  </LazyMotion>
                 </div>
               ))}
             </div>
@@ -207,23 +218,32 @@ export default function About() {
                 onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setModalImg(img)}
               >
                 <div className="relative overflow-hidden rounded-2xl shadow-lg bg-white">
-                  {imageErrors[img.src] ? (
-                    <div className="w-full h-80 bg-gray-200 flex items-center justify-center">
-                      <Camera className="w-12 h-12 mx-auto mb-2" />
-                      <p className="text-sm text-center">{img.alt}</p>
-                    </div>
-                  ) : (
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={400}
-                      height={320}
-                      className="object-cover w-full h-80 group-hover:scale-105 transition-transform duration-500"
-                      onError={() => handleImageError(img.src)}
-                      onLoadingComplete={() => handleImageLoad(img.src)}
-                      priority={idx === 0}
-                    />
-                  )}
+                  <LazyMotion features={domAnimation}>
+                    <m.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: imageLoaded[img.src] ? 1 : 0 }}
+                      transition={{ duration: 1.5 }}
+                      className="w-full h-full"
+                    >
+                      {imageErrors[img.src] ? (
+                        <div className="w-full h-80 bg-gray-200 flex items-center justify-center">
+                          <Camera className="w-12 h-12 mx-auto mb-2" />
+                          <p className="text-sm text-center">{img.alt}</p>
+                        </div>
+                      ) : (
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={400}
+                          height={320}
+                          className="object-cover w-full h-80 group-hover:scale-105 transition-transform duration-500"
+                          onError={() => handleImageError(img.src)}
+                          onLoadingComplete={() => handleImageLoad(img.src)}
+                          priority={idx === 0}
+                        />
+                      )}
+                    </m.div>
+                  </LazyMotion>
                 </div>
               </div>
             ))}
@@ -255,15 +275,25 @@ export default function About() {
                 <div className="relative bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
                   <div className="relative mb-6">
                     <div className="w-32 h-32 mx-auto rounded-full overflow-hidden ring-4 ring-blue-100">
-                      <Image
-                        src={member.img}
-                        alt={member.name}
-                        width={128}
-                        height={128}
-                        className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
-                        onError={() => handleImageError(member.img)}
-                        priority={idx === 0}
-                      />
+                      <LazyMotion features={domAnimation}>
+                        <m.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: imageLoaded[member.img] ? 1 : 0 }}
+                          transition={{ duration: 1.5 }}
+                          className="w-full h-full"
+                        >
+                          <Image
+                            src={member.img}
+                            alt={member.name}
+                            width={128}
+                            height={128}
+                            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+                            onError={() => handleImageError(member.img)}
+                            onLoadingComplete={() => handleImageLoad(member.img)}
+                            priority={idx === 0}
+                          />
+                        </m.div>
+                      </LazyMotion>
                     </div>
                   </div>
                   <div className="space-y-3">
@@ -393,15 +423,24 @@ export default function About() {
             aria-modal="true"
             role="dialog"
           >
-            <Image
-              src={modalImg.src}
-              alt={modalImg.alt || 'Preview'}
-              className="object-cover rounded-xl mb-4 w-full"
-              width={400}
-              height={256}
-              onError={() => handleImageError(modalImg.src)}
-              onLoadingComplete={() => handleImageLoad(modalImg.src)}
-            />
+            <LazyMotion features={domAnimation}>
+              <m.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: imageLoaded[modalImg.src] ? 1 : 0 }}
+                transition={{ duration: 1.5 }}
+                className="w-full h-full"
+              >
+                <Image
+                  src={modalImg.src}
+                  alt={modalImg.alt || 'Preview'}
+                  className="object-cover rounded-xl mb-4 w-full"
+                  width={400}
+                  height={256}
+                  onError={() => handleImageError(modalImg.src)}
+                  onLoadingComplete={() => handleImageLoad(modalImg.src)}
+                />
+              </m.div>
+            </LazyMotion>
             <button
               aria-label="Close modal"
               className="absolute top-4 right-4 text-gray-700 hover:text-blue-600 text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 p-2"
