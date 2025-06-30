@@ -26,7 +26,7 @@ export default function ProductPhotographyPage() {
             <div>
               <h2 className="text-3xl font-bold text-[#232323] mb-6">Professional Product Showcase</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                In today's digital marketplace, high-quality product photography is essential for success. 
+                In today&apos;s digital marketplace, high-quality product photography is essential for success. 
                 Our professional product photography services help businesses showcase their products with 
                 stunning imagery that drives sales and builds brand credibility.
               </p>
@@ -135,7 +135,7 @@ export default function ProductPhotographyPage() {
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Showcase Your Products?</h2>
           <p className="text-lg mb-8 text-white/90">
-            Let's create stunning product photography that drives sales and builds your brand
+            Let&apos;s create stunning product photography that drives sales and builds your brand
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

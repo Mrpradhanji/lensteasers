@@ -96,11 +96,11 @@ export default function Contact() {
             </div>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
-            Let's Create
+            Let&apos;s Create
             <span className="block text-[#f3e7d9]">Magic Together</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed">
-            Ready to capture your precious moments? We're here to turn your vision into timeless memories.
+            Ready to capture your precious moments? We&apos;re here to turn your vision into timeless memories.
           </p>
           
           {/* Trust Indicators */}
@@ -122,79 +122,79 @@ export default function Contact() {
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-16">
           {/* Contact Information */}
-          <div className="space-y-10">
+          <div className="space-y-8 sm:space-y-10">
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 py-2 mb-6">
                 <div className="w-2 h-2 bg-[#b48b3c] rounded-full"></div>
                 <span className="text-sm font-medium text-[#b48b3c]">Get In Touch</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#232323] mb-6 tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#232323] mb-6 tracking-tight leading-tight">
                 Ready to Start Your
                 <span className="block text-[#b48b3c]">Photography Journey?</span>
               </h2>
-              <p className="text-[#232323]/80 text-lg mb-8 font-light leading-relaxed">
-                We're passionate about capturing life's most precious moments. Let's discuss your vision and create something extraordinary together.
+              <p className="text-[#232323]/80 text-base sm:text-lg mb-8 font-light leading-relaxed">
+                We&apos;re passionate about capturing life&apos;s most precious moments. Let&apos;s discuss your vision and create something extraordinary together.
               </p>
             </div>
 
             {/* Contact Cards */}
-            <div className="space-y-6">
-              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-6 sm:p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full transition-all duration-500 group-hover:scale-110"></div>
-                <div className="flex items-center space-x-6 relative z-10">
-                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
-                    <Phone className="w-7 h-7 text-white" />
+                <div className="flex items-center space-x-4 sm:space-x-6 relative z-10">
+                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-3 sm:p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <Phone className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#232323] text-lg mb-1">Call Us</h3>
-                    <p className="text-[#232323]/80 text-lg font-medium">+91 9520271285</p>
-                    <p className="text-sm text-[#232323]/60">Available Mon-Sat, 9AM-7PM</p>
+                    <h3 className="font-bold text-[#232323] text-base sm:text-lg mb-1">Call Us</h3>
+                    <p className="text-[#232323]/80 text-base sm:text-lg font-medium">+91 9520271285</p>
+                    <p className="text-xs sm:text-sm text-[#232323]/60">Available Mon-Sat, 9AM-7PM</p>
                   </div>
                 </div>
               </div>
 
-              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
+              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-6 sm:p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full transition-all duration-500 group-hover:scale-110"></div>
-                <div className="flex items-center space-x-6 relative z-10">
-                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
-                    <Mail className="w-7 h-7 text-white" />
+                <div className="flex items-center space-x-4 sm:space-x-6 relative z-10">
+                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-3 sm:p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <Mail className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#232323] text-lg mb-1">Email Us</h3>
-                    <p className="text-[#232323]/80 text-lg font-medium">lensteasers@gmail.com</p>
-                    <p className="text-sm text-[#232323]/60">We'll respond within 24 hours</p>
+                    <h3 className="font-bold text-[#232323] text-base sm:text-lg mb-1">Email Us</h3>
+                    <p className="text-[#232323]/80 text-base sm:text-lg font-medium">lensteasers@gmail.com</p>
+                    <p className="text-xs sm:text-sm text-[#232323]/60">We&apos;ll respond within 24 hours</p>
                   </div>
                 </div>
               </div>
 
-              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
+              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-6 sm:p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full transition-all duration-500 group-hover:scale-110"></div>
-                <div className="flex items-center space-x-6 relative z-10">
-                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
-                    <MapPin className="w-7 h-7 text-white" />
+                <div className="flex items-center space-x-4 sm:space-x-6 relative z-10">
+                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-3 sm:p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <MapPin className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#232323] text-lg mb-1">Visit Our Studio</h3>
-                    <p className="text-[#232323]/80">SE 87A, Jaipuria Sunrise Plaza</p>
-                    <p className="text-[#232323]/80">Ahinsa Khand 1, Indirapuram</p>
-                    <p className="text-[#232323]/80">Ghaziabad, Uttar Pradesh 201014</p>
+                    <h3 className="font-bold text-[#232323] text-base sm:text-lg mb-1">Visit Our Studio</h3>
+                    <p className="text-[#232323]/80 text-sm sm:text-base">SE 87A, Jaipuria Sunrise Plaza</p>
+                    <p className="text-[#232323]/80 text-sm sm:text-base">Ahinsa Khand 1, Indirapuram</p>
+                    <p className="text-[#232323]/80 text-sm sm:text-base">Ghaziabad, Uttar Pradesh 201014</p>
                   </div>
                 </div>
               </div>
 
-              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
+              <div className="group bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-6 sm:p-8 hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-500 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full transition-all duration-500 group-hover:scale-110"></div>
-                <div className="flex items-center space-x-6 relative z-10">
-                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
-                    <Clock className="w-7 h-7 text-white" />
+                <div className="flex items-center space-x-4 sm:space-x-6 relative z-10">
+                  <div className="bg-gradient-to-br from-[#b48b3c] to-[#a07a2c] p-3 sm:p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <Clock className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#232323] text-lg mb-1">Business Hours</h3>
-                    <p className="text-[#232323]/80 font-medium">Monday - Saturday</p>
-                    <p className="text-[#232323]/80 font-medium">9:00 AM - 7:00 PM</p>
-                    <p className="text-sm text-[#232323]/60">Sunday: By appointment only</p>
+                    <h3 className="font-bold text-[#232323] text-base sm:text-lg mb-1">Business Hours</h3>
+                    <p className="text-[#232323]/80 font-medium text-sm sm:text-base">Monday - Saturday</p>
+                    <p className="text-[#232323]/80 font-medium text-sm sm:text-base">9:00 AM - 7:00 PM</p>
+                    <p className="text-xs sm:text-sm text-[#232323]/60">Sunday: By appointment only</p>
                   </div>
                 </div>
               </div>
@@ -202,40 +202,40 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white border border-[#f3e7d9] rounded-3xl shadow-2xl p-10 relative overflow-hidden">
+          <div className="bg-white border border-[#f3e7d9] rounded-3xl shadow-2xl p-6 sm:p-10 relative overflow-hidden">
             {/* Form Background Decoration */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#b48b3c]/5 to-transparent rounded-bl-full"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#e7d6c6]/30 to-transparent rounded-tr-full"></div>
             
             <div className="relative z-10">
-              <div className="text-center mb-8">
+              <div className="text-center mb-6 sm:mb-8">
                 <div className="inline-flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 py-2 mb-4">
                   <Send className="w-4 h-4 text-[#b48b3c]" />
                   <span className="text-sm font-medium text-[#b48b3c]">Send Message</span>
                 </div>
-                <h2 className="text-3xl font-bold text-[#232323] mb-2 tracking-tight">Tell Us About Your Vision</h2>
-                <p className="text-[#232323]/70">We'd love to hear about your photography dreams</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#232323] mb-2 tracking-tight">Tell Us About Your Vision</h2>
+                <p className="text-[#232323]/70 text-sm sm:text-base">We&apos;d love to hear about your photography dreams</p>
               </div>
 
               {/* Success/Error Messages */}
               {submitStatus === 'success' && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-green-800 font-medium">Thank you! Your message has been sent successfully. We'll get back to you soon!</span>
+                  <span className="text-green-800 font-medium text-sm sm:text-base">Thank you! Your message has been sent successfully. We&apos;ll get back to you soon!</span>
                 </div>
               )}
 
               {submitStatus === 'error' && (
                 <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center space-x-3">
                   <AlertCircle className="w-5 h-5 text-red-600" />
-                  <span className="text-red-800 font-medium">Oops! Something went wrong. Please try again or contact us directly.</span>
+                  <span className="text-red-800 font-medium text-sm sm:text-base">Oops! Something went wrong. Please try again or contact us directly.</span>
                 </div>
               )}
               
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="group">
-                    <label htmlFor="name" className="block text-sm font-semibold text-[#232323] mb-3">
+                    <label htmlFor="name" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                       Full Name *
                     </label>
                     <div className="relative">
@@ -246,14 +246,14 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-4 border-2 text-black border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
+                        className="w-full px-3 sm:px-4 py-3 sm:py-4 border-2 text-black border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base"
                         placeholder="Enter your full name"
                       />
                       <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </div>
                   <div className="group">
-                    <label htmlFor="email" className="block text-sm font-semibold text-[#232323] mb-3">
+                    <label htmlFor="email" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                       Email Address *
                     </label>
                     <div className="relative">
@@ -264,7 +264,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 text-black py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
+                        className="w-full px-3 sm:px-4 text-black py-3 sm:py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base"
                         placeholder="Enter your email"
                       />
                       <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -272,9 +272,9 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="group">
-                    <label htmlFor="phone" className="block text-sm font-semibold text-[#232323] mb-3">
+                    <label htmlFor="phone" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                       Phone Number
                     </label>
                     <div className="relative">
@@ -284,14 +284,14 @@ export default function Contact() {
                         name="user_phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 text-black py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50"
+                        className="w-full px-3 sm:px-4 text-black py-3 sm:py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base"
                         placeholder="Enter your phone number"
                       />
                       <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </div>
                   <div className="group">
-                    <label htmlFor="subject" className="block text-sm font-semibold text-[#232323] mb-3">
+                    <label htmlFor="subject" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                       Subject *
                     </label>
                     <div className="relative">
@@ -301,7 +301,7 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-4 text-black border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 appearance-none"
+                        className="w-full px-3 sm:px-4 py-3 sm:py-4 text-black border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 appearance-none text-sm sm:text-base"
                       >
                         <option value="">Select a subject</option>
                         <option value="booking">Photo Session Booking</option>
@@ -318,7 +318,7 @@ export default function Contact() {
                 </div>
 
                 <div className="group">
-                  <label htmlFor="message" className="block text-sm font-semibold text-[#232323] mb-3">
+                  <label htmlFor="message" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                     Your Message *
                   </label>
                   <div className="relative">
@@ -328,8 +328,8 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows={6}
-                      className="w-full px-4 py-4 border-2 border-[#f3e7d9] text-black rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 resize-none bg-white group-hover:border-[#b48b3c]/50"
+                      rows={5}
+                      className="w-full px-3 sm:px-4 py-3 sm:py-4 border-2 border-[#f3e7d9] text-black rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 resize-none bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base"
                       placeholder="Tell us about your photography vision, preferred dates, or any questions you have..."
                     />
                     <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -339,7 +339,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] hover:from-[#a07a2c] hover:to-[#8b6b1c] disabled:from-gray-400 disabled:to-gray-500 text-white py-5 px-8 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105 group disabled:cursor-not-allowed disabled:transform-none"
+                  className="w-full bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] hover:from-[#a07a2c] hover:to-[#8b6b1c] disabled:from-gray-400 disabled:to-gray-500 text-white py-4 sm:py-5 px-6 sm:px-8 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105 group disabled:cursor-not-allowed disabled:transform-none"
                 >
                   {isSubmitting ? (
                     <>
@@ -372,7 +372,7 @@ export default function Contact() {
               </div>
               <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Find Our Creative Studio</h2>
               <p className="text-[#232323]/70 text-lg mb-8 max-w-2xl mx-auto">
-                Visit our professional studio where magic happens. We've created a comfortable and inspiring environment for your photography sessions.
+                Visit our professional studio where magic happens. We&apos;ve created a comfortable and inspiring environment for your photography sessions.
               </p>
               
               {/* Google Maps Embed */}

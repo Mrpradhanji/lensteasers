@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { Camera, Gift, Users, Clock, Star, Check, ArrowRight, Calendar, Heart, Smile } from 'lucide-react';
+import { Camera, Star, Users, ArrowRight, Check, Gift, Clock } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -74,8 +73,6 @@ const testimonials = [
 ];
 
 export default function BirthdayEvents() {
-  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6] relative overflow-hidden">
       {/* Decorative Background Elements */}
@@ -231,7 +228,7 @@ export default function BirthdayEvents() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {packages.map((pkg, index) => (
+            {packages.map((pkg) => (
               <div 
                 key={pkg.name}
                 className={`relative bg-white border-2 rounded-3xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 ${
@@ -329,14 +326,14 @@ export default function BirthdayEvents() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.name} className="bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center space-x-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-[#b48b3c] text-[#b48b3c]" />
                   ))}
                 </div>
-                <p className="text-[#232323]/80 mb-6 italic">"{testimonial.comment}"</p>
+                <p className="text-[#232323]/80 mb-6 italic">&ldquo;{testimonial.comment}&rdquo;</p>
                 <div>
                   <h4 className="font-semibold text-[#232323]">{testimonial.name}</h4>
                   <p className="text-sm text-[#232323]/60">{testimonial.event}</p>
@@ -356,7 +353,7 @@ export default function BirthdayEvents() {
               <Gift className="w-4 h-4 text-[#b48b3c]" />
               <span className="text-sm font-medium text-[#b48b3c]">Ready to Book?</span>
             </div>
-            <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Let's Make Your Birthday Unforgettable</h2>
+            <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Let&apos;s Make Your Birthday Unforgettable</h2>
             <p className="text-[#232323]/70 text-lg mb-8 max-w-2xl mx-auto">
               Book your birthday photography session today and ensure every precious moment is captured beautifully.
             </p>

@@ -133,7 +133,7 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service) => (
               <div
                 key={service.id}
@@ -141,7 +141,7 @@ export default function ServicesPage() {
                 onClick={() => setSelectedService(selectedService === service.id ? null : service.id)}
               >
                 {/* Service Image */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 sm:h-64 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -151,22 +151,22 @@ export default function ServicesPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
+                    <h3 className="text-lg sm:text-2xl font-bold text-white mb-2">{service.title}</h3>
                   </div>
                 </div>
 
                 {/* Service Content */}
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                <div className="p-4 sm:p-6">
+                  <p className="text-gray-600 mb-4 leading-relaxed text-sm sm:text-base">
                     {service.description}
                   </p>
                   
                   {/* Features List */}
                   <div className={`transition-all duration-300 ${selectedService === service.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                    <h4 className="font-semibold text-[#b48b3c] mb-3">What's Included:</h4>
+                    <h4 className="font-semibold text-[#b48b3c] mb-3 text-sm sm:text-base">What&apos;s Included:</h4>
                     <ul className="space-y-2 mb-4">
                       {service.features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-sm text-gray-600">
+                        <li key={index} className="flex items-center text-xs sm:text-sm text-gray-600">
                           <span className="w-2 h-2 bg-[#b48b3c] rounded-full mr-3 flex-shrink-0"></span>
                           {feature}
                         </li>
@@ -175,9 +175,9 @@ export default function ServicesPage() {
                   </div>
 
                   {/* CTA Button */}
-                  <div className="flex justify-between items-center">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
                     <button
-                      className="text-[#b48b3c] font-semibold hover:text-[#a07a2c] transition-colors"
+                      className="text-[#b48b3c] font-semibold hover:text-[#a07a2c] transition-colors text-sm sm:text-base"
                       onClick={(e) => {
                         e.stopPropagation();
                         setSelectedService(selectedService === service.id ? null : service.id);
@@ -187,7 +187,7 @@ export default function ServicesPage() {
                     </button>
                     <Link
                       href={service.href}
-                      className="bg-[#b48b3c] hover:bg-[#a07a2c] text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors"
+                      className="bg-[#b48b3c] hover:bg-[#a07a2c] text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors w-full sm:w-auto text-center"
                       onClick={(e) => e.stopPropagation()}
                     >
                       Book Now
@@ -218,7 +218,7 @@ export default function ServicesPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-2">Passion</h3>
-              <p className="text-gray-300">We're passionate about capturing your precious moments</p>
+              <p className="text-gray-300">We&apos;re passionate about capturing your precious moments</p>
             </div>
             
             <div className="text-center">
@@ -259,7 +259,7 @@ export default function ServicesPage() {
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Capture Your Moments?</h2>
           <p className="text-lg mb-8 text-white/90">
-            Let's discuss your photography needs and create something beautiful together
+            Let&apos;s discuss your photography needs and create something beautiful together
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

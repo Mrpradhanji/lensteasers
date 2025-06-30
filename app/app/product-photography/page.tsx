@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { Camera, Package, ShoppingBag, Star, Check, ArrowRight, Settings, Zap, Target } from 'lucide-react';
+import { Package, Star, ShoppingBag, Settings, Check, Target, Zap, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -232,7 +231,7 @@ export default function ProductPhotography() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {packages.map((pkg, index) => (
+            {packages.map((pkg) => (
               <div 
                 key={pkg.name}
                 className={`relative bg-white border-2 rounded-3xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 ${
@@ -337,7 +336,7 @@ export default function ProductPhotography() {
                     <Star key={i} className="w-5 h-5 fill-[#b48b3c] text-[#b48b3c]" />
                   ))}
                 </div>
-                <p className="text-[#232323]/80 mb-6 italic">"{testimonial.comment}"</p>
+                <p className="text-[#232323]/80 mb-6 italic">&quot;{testimonial.comment}&apos;</p>
                 <div>
                   <h4 className="font-semibold text-[#232323]">{testimonial.name}</h4>
                   <p className="text-sm text-[#232323]/60">{testimonial.business}</p>
@@ -359,7 +358,7 @@ export default function ProductPhotography() {
             </div>
             <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Transform Your Products with Professional Photography</h2>
             <p className="text-[#232323]/70 text-lg mb-8 max-w-2xl mx-auto">
-              Professional product photography can increase your sales by up to 40%. Let's showcase your products in their best light.
+              Professional product photography can increase your sales by up to 40%. Let&apos;s showcase your products in their best light.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

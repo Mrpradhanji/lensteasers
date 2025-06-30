@@ -28,7 +28,7 @@ export default function WeddingPhotographyPage() {
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 Your wedding day is one of the most important days of your life, and we understand the responsibility 
                 of capturing every moment. Our wedding photography packages are designed to tell your unique love story 
-                through stunning imagery that you'll treasure forever.
+                through stunning imagery that you&apos;ll treasure forever.
               </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 We blend photojournalistic storytelling with artistic portraiture to create a comprehensive collection 
@@ -63,7 +63,7 @@ export default function WeddingPhotographyPage() {
       {/* What's Included */}
       <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-[#232323] mb-12">What's Included in Your Package</h2>
+          <h2 className="text-3xl font-bold text-center text-[#232323] mb-12">What&apos;s Included in Your Package</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow-lg">
@@ -135,7 +135,7 @@ export default function WeddingPhotographyPage() {
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Book Your Wedding Photography?</h2>
           <p className="text-lg mb-8 text-white/90">
-            Let's discuss your wedding photography needs and create a package that's perfect for your special day
+            Let&apos;s discuss your wedding photography needs and create a package that&apos;s perfect for your special day
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

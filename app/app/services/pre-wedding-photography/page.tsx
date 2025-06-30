@@ -26,7 +26,7 @@ export default function PreWeddingPhotographyPage() {
             <div>
               <h2 className="text-3xl font-bold text-[#232323] mb-6">Capture Your Love Story</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Pre-wedding photography is more than just engagement photos - it's about capturing the excitement, 
+                Pre-wedding photography is more than just engagement photos - it&apos;s about capturing the excitement, 
                 love, and anticipation of your upcoming wedding. These sessions allow you to get comfortable in front 
                 of the camera while creating stunning images for your wedding announcements and keepsakes.
               </p>
@@ -63,7 +63,7 @@ export default function PreWeddingPhotographyPage() {
       {/* What's Included */}
       <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-[#232323] mb-12">What's Included in Your Session</h2>
+          <h2 className="text-3xl font-bold text-center text-[#232323] mb-12">What&apos;s Included in Your Session</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow-lg">
@@ -135,7 +135,7 @@ export default function PreWeddingPhotographyPage() {
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready for Your Pre-Wedding Shoot?</h2>
           <p className="text-lg mb-8 text-white/90">
-            Let's create beautiful engagement photos that tell your unique love story
+            Let&apos;s create beautiful engagement photos that tell your unique love story
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

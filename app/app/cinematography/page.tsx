@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { Camera, Video, Play, Star, Check, ArrowRight, Film, Music, Heart, Users } from 'lucide-react';
+import { Star, Users, Phone, ArrowRight, Check, Video, Music, Play, Clock } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -122,7 +121,7 @@ export default function Cinematography() {
               <span className="text-sm font-medium">5.0 Rating</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Film className="w-4 h-4 text-[#f3e7d9]" />
+              <Clock className="w-4 h-4 text-[#f3e7d9]" />
               <span className="text-sm font-medium">100+ Videos Created</span>
             </div>
           </div>
@@ -149,7 +148,7 @@ export default function Cinematography() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-xl hover:scale-105 transition-all duration-300">
               <div className="bg-[#b48b3c]/10 p-4 rounded-2xl w-fit mb-6">
-                <Heart className="w-8 h-8 text-[#b48b3c]" />
+                <Phone className="w-8 h-8 text-[#b48b3c]" />
               </div>
               <h3 className="text-2xl font-bold text-[#232323] mb-4">Wedding Videos</h3>
               <p className="text-[#232323]/70 mb-6">Cinematic wedding videos that tell your love story beautifully</p>
@@ -232,7 +231,7 @@ export default function Cinematography() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {packages.map((pkg, index) => (
+            {packages.map((pkg) => (
               <div 
                 key={pkg.name}
                 className={`relative bg-white border-2 rounded-3xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 ${
@@ -335,14 +334,14 @@ export default function Cinematography() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.name} className="bg-white border border-[#f3e7d9] rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center space-x-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-[#b48b3c] text-[#b48b3c]" />
                   ))}
                 </div>
-                <p className="text-[#232323]/80 mb-6 italic">"{testimonial.comment}"</p>
+                <p className="text-[#232323]/80 mb-6 italic">&ldquo;{testimonial.comment}&rdquo;</p>
                 <div>
                   <h4 className="font-semibold text-[#232323]">{testimonial.name}</h4>
                   <p className="text-sm text-[#232323]/60">{testimonial.event}</p>
@@ -362,7 +361,7 @@ export default function Cinematography() {
               <Video className="w-4 h-4 text-[#b48b3c]" />
               <span className="text-sm font-medium text-[#b48b3c]">Ready to Create Magic?</span>
             </div>
-            <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Let's Turn Your Vision Into Cinematic Reality</h2>
+            <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Let&apos;s Turn Your Vision Into Cinematic Reality</h2>
             <p className="text-[#232323]/70 text-lg mb-8 max-w-2xl mx-auto">
               Professional cinematography that captures every emotion and creates lasting memories. Contact us to discuss your video project.
             </p>

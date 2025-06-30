@@ -1,6 +1,7 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
-import { Camera, Filter, X, ChevronLeft, ChevronRight, Heart, Share2, Sparkles, Eye, Download } from 'lucide-react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { Camera, X, ChevronLeft, ChevronRight, Heart, Share2, Sparkles, Eye, Download } from 'lucide-react';
+import Image from 'next/image';
 
 // Gallery data with categories
 const galleryData = [
@@ -44,21 +45,21 @@ export default function Gallery() {
     setTimeout(() => setIsLoading(false), 300);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedImage(null);
-  };
+  }, []);
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     const nextIndex = (currentImageIndex + 1) % filteredImages.length;
     setSelectedImage(filteredImages[nextIndex]);
     setCurrentImageIndex(nextIndex);
-  };
+  }, [currentImageIndex, filteredImages]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     const prevIndex = currentImageIndex === 0 ? filteredImages.length - 1 : currentImageIndex - 1;
     setSelectedImage(filteredImages[prevIndex]);
     setCurrentImageIndex(prevIndex);
-  };
+  }, [currentImageIndex, filteredImages]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -70,7 +71,11 @@ export default function Gallery() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedImage, currentImageIndex, filteredImages]);
+  }, [selectedImage, nextImage, prevImage, closeModal]);
+
+  useEffect(() => {
+    // ...
+  }, [selectedCategory, nextImage, prevImage]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50">
@@ -103,25 +108,26 @@ export default function Gallery() {
       </section>
 
       {/* Modern Filter Section */}
-      <section className="sticky top-0 z-40 py-6 bg-white/80 backdrop-blur-xl border-b border-gray-100/50">
+      <section className="sticky top-0 z-40 py-4 sm:py-6 bg-white/80 backdrop-blur-xl border-b border-gray-100/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* Category Filters */}
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`group relative flex items-center gap-3 px-6 py-3 rounded-2xl font-medium transition-all duration-500 ${
+                  className={`group relative flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-2xl font-medium transition-all duration-500 text-sm sm:text-base ${
                     selectedCategory === category.id
                       ? 'bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] text-white shadow-lg shadow-[#b48b3c]/25'
                       : 'bg-white/60 text-gray-700 hover:bg-white hover:shadow-lg border border-gray-200/50'
                   }`}
                 >
-                  <category.icon className={`w-5 h-5 transition-transform duration-300 ${
+                  <category.icon className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 ${
                     selectedCategory === category.id ? 'scale-110' : 'group-hover:scale-110'
                   }`} />
-                  <span>{category.name}</span>
+                  <span className="hidden sm:inline">{category.name}</span>
+                  <span className="sm:hidden">{category.name.split(' ')[0]}</span>
                   <span className={`px-2 py-1 rounded-full text-xs ${
                     selectedCategory === category.id 
                       ? 'bg-white/20 text-white' 
@@ -143,7 +149,7 @@ export default function Gallery() {
                     : 'text-gray-600 hover:text-[#b48b3c]'
                 }`}
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v7h-7V3zm0 11h7v7h-7v-7z"/>
                 </svg>
               </button>
@@ -155,7 +161,7 @@ export default function Gallery() {
                     : 'text-gray-600 hover:text-[#b48b3c]'
                 }`}
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z"/>
                 </svg>
               </button>
@@ -165,11 +171,11 @@ export default function Gallery() {
       </section>
 
       {/* Modern Gallery Grid */}
-      <section className="py-12">
+      <section className="py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={galleryRef}
-            className={`grid gap-6 ${
+            className={`grid gap-4 sm:gap-6 ${
               viewMode === 'grid' 
                 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
                 : 'columns-1 sm:columns-2 lg:columns-3 xl:columns-4'
@@ -195,10 +201,12 @@ export default function Gallery() {
                     </div>
                   </div>
                 ) : (
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.alt}
                     className="w-full aspect-[4/5] object-cover group-hover:scale-110 transition-transform duration-700"
+                    width={500}
+                    height={625}
                     onError={() => handleImageError(image.src)}
                   />
                 )}
@@ -287,10 +295,12 @@ export default function Gallery() {
                   </div>
                 </div>
               ) : (
-                <img
+                <Image
                   src={selectedImage.src}
                   alt={selectedImage.alt}
                   className="w-full rounded-3xl shadow-2xl"
+                  width={1200}
+                  height={1500}
                 />
               )}
             </div>

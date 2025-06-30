@@ -31,7 +31,7 @@ export default function BirthdayEventsPage() {
                 is documented beautifully for you to cherish forever.
               </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Whether it's a child's first birthday, a milestone celebration, or an adult's special day, 
+                Whether it&apos;s a child&apos;s first birthday, a milestone celebration, or an adult&apos;s special day, 
                 we adapt our style to match the energy and atmosphere of your event.
               </p>
               
@@ -134,7 +134,7 @@ export default function BirthdayEventsPage() {
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Capture Your Birthday Celebration?</h2>
           <p className="text-lg mb-8 text-white/90">
-            Let's make your birthday party memories last forever with beautiful photography
+            Let&apos;s make your birthday party memories last forever with beautiful photography
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

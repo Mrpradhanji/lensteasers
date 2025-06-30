@@ -5,8 +5,6 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import GradientButton from './components/GradientButton';
-import { Instagram, Facebook } from 'lucide-react';
-import Footer from './components/Footer';
 
 // Replace galleryImages with real images
 const galleryImages = [
@@ -50,8 +48,6 @@ function VideoPlayer({ url }: { url: string }) {
 }
 
 export default function Home() {
-  const [visibleIndices, setVisibleIndices] = useState<number[]>([]);
-
   return (
     <main className="relative min-h-screen w-full bg-white text-white overflow-x-hidden">
       {/* Hero Section with Video */}
@@ -109,7 +105,7 @@ export default function Home() {
           {/* Text center */}
           <div className="z-10 text-center lg:text-left text-sm sm:text-base text-black space-y-4">
             <p>
-            Lensteasers is a team of committed photographers that are passionate about capturing the significant moments in their client's life. Baby, weddings, events, portfolios, and product shoots are just a few of the services we provide, demonstrating our proficiency in a variety of fields of modern photography. It's wonderful to read that we also specialise in newborn and maternity shoots, emphasising the significance of these occasions for women and their families.
+            Lensteasers is a team of committed photographers that are passionate about capturing the significant moments in their client&apos;s life. Baby, weddings, events, portfolios, and product shoots are just a few of the services we provide, demonstrating our proficiency in a variety of fields of modern photography. It&apos;s wonderful to read that we also specialise in newborn and maternity shoots, emphasising the significance of these occasions for women and their families.
             </p>
             <p>
             The fact that we provide both photography and editing services in Delhi and the NCR demonstrates their dedication to offering the finest service possible. It is apparent that Lensteasers is committed to assisting its clients in preserving their memories for future generations.
@@ -137,55 +133,55 @@ export default function Home() {
             <span className="font-semibold text-black">Photography Services</span>
           </h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {/* Baby Shoot Photography */}
-          <div className="bg-white border border-[#f3e7d9] rounded-2xl shadow-md p-8 flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-300 group">
+          <div className="bg-white border border-[#f3e7d9] rounded-2xl shadow-md p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-300 group">
             {/* Accent bar */}
             <div className="w-12 h-1 rounded-full bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] mb-4" />
-            <div className="mb-4 w-56 h-56 relative">
+            <div className="mb-4 w-48 h-48 sm:w-56 sm:h-56 relative">
               <Image
                 src="/images/BabyShoot.jpg"
                 alt="Baby Shoot Photography"
                 fill
                 className="object-cover rounded-xl border-4 border-[#b48b3c] shadow-lg group-hover:border-[#a07a2c] transition-all duration-300"
-                sizes="224px"
+                sizes="(max-width: 640px) 192px, 224px"
               />
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-[#b48b3c] tracking-tight">Baby Shoot Photography</h3>
-            <p className="text-gray-600 text-base sm:text-lg mb-4 font-light">Cherish the innocence and joy of your baby's early days with creative, heartwarming photography sessions.</p>
-            <button className="mt-auto px-5 py-2 rounded-full bg-[#b48b3c] text-white font-semibold shadow hover:bg-[#a07a2c] transition-colors text-sm sm:text-base">Learn More</button>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#b48b3c] tracking-tight">Baby Shoot Photography</h3>
+            <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-4 font-light">Cherish the innocence and joy of your baby&apos;s early days with creative, heartwarming photography sessions.</p>
+            <button className="mt-auto px-4 sm:px-5 py-2 rounded-full bg-[#b48b3c] text-white font-semibold shadow hover:bg-[#a07a2c] transition-colors text-sm sm:text-base">Learn More</button>
           </div>
           {/* Maternity Shoot Photography */}
-          <div className="bg-white border border-[#f3e7d9] rounded-2xl shadow-md p-8 flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-300 group">
+          <div className="bg-white border border-[#f3e7d9] rounded-2xl shadow-md p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-300 group">
             <div className="w-12 h-1 rounded-full bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] mb-4" />
-            <div className="mb-4 w-56 h-56 relative">
+            <div className="mb-4 w-48 h-48 sm:w-56 sm:h-56 relative">
               <Image
                 src="/images/Maternity_Home.jpg"
                 alt="Maternity Shoot Photography"
                 fill
                 className="object-cover rounded-xl border-4 border-[#b48b3c] shadow-lg group-hover:border-[#a07a2c] transition-all duration-300"
-                sizes="224px"
+                sizes="(max-width: 640px) 192px, 224px"
               />
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-[#b48b3c] tracking-tight">Maternity Shoot Photography</h3>
-            <p className="text-gray-600 text-base sm:text-lg mb-4 font-light">Celebrate the beauty of motherhood and the anticipation of new life with elegant, memorable maternity portraits.</p>
-            <button className="mt-auto px-5 py-2 rounded-full bg-[#b48b3c] text-white font-semibold shadow hover:bg-[#a07a2c] transition-colors text-sm sm:text-base">Learn More</button>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#b48b3c] tracking-tight">Maternity Shoot Photography</h3>
+            <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-4 font-light">Celebrate the beauty of motherhood and the anticipation of new life with elegant, memorable maternity portraits.</p>
+            <button className="mt-auto px-4 sm:px-5 py-2 rounded-full bg-[#b48b3c] text-white font-semibold shadow hover:bg-[#a07a2c] transition-colors text-sm sm:text-base">Learn More</button>
           </div>
           {/* Newborn Shoot Photography */}
-          <div className="bg-white border border-[#f3e7d9] rounded-2xl shadow-md p-8 flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-300 group">
+          <div className="bg-white border border-[#f3e7d9] rounded-2xl shadow-md p-6 sm:p-8 flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 hover:border-[#b48b3c] transition-all duration-300 group sm:col-span-2 lg:col-span-1">
             <div className="w-12 h-1 rounded-full bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] mb-4" />
-            <div className="mb-4 w-56 h-56 relative">
+            <div className="mb-4 w-48 h-48 sm:w-56 sm:h-56 relative">
               <Image
-                src="/images/newborn.jpg"
+                src="/images/NewBorn.jpg"
                 alt="Newborn Shoot Photography"
                 fill
                 className="object-cover rounded-xl border-4 border-[#b48b3c] shadow-lg group-hover:border-[#a07a2c] transition-all duration-300"
-                sizes="224px"
+                sizes="(max-width: 640px) 192px, 224px"
               />
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-[#b48b3c] tracking-tight">Newborn Shoot Photography</h3>
-            <p className="text-gray-600 text-base sm:text-lg mb-4 font-light">Capture the first precious moments of your newborn's life with gentle, artistic photography in a safe environment.</p>
-            <button className="mt-auto px-5 py-2 rounded-full bg-[#b48b3c] text-white font-semibold shadow hover:bg-[#a07a2c] transition-colors text-sm sm:text-base">Learn More</button>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#b48b3c] tracking-tight">Newborn Shoot Photography</h3>
+            <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-4 font-light">Capture the first precious moments of your newborn&apos;s life with gentle, artistic photography in a safe environment.</p>
+            <button className="mt-auto px-4 sm:px-5 py-2 rounded-full bg-[#b48b3c] text-white font-semibold shadow hover:bg-[#a07a2c] transition-colors text-sm sm:text-base">Learn More</button>
           </div>
         </div>
       </section>

@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { Heart, Camera, Star, Users, Calendar, MapPin, Phone, Mail, ArrowRight, Check, Play } from 'lucide-react';
+import { Heart, Camera, Star, Users, Phone, ArrowRight, Check } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -101,7 +100,7 @@ export default function Maternity() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-white text-black py-20 overflow-hidden">
+      <div className="relative bg-white text-black py-16 sm:py-20 overflow-hidden">
         {/* Hero Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -110,102 +109,97 @@ export default function Maternity() {
         </div>
         
         <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="flex justify-center mb-6">
-            <div className="flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-6 py-2">
-              <Heart className="w-5 h-5 text-[#b48b3c]" />
-              <span className="text-sm font-medium text-[#b48b3c]">Maternity Photography</span>
+          <div className="flex justify-center mb-4 sm:mb-6">
+            <div className="flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 sm:px-6 py-2">
+              <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-[#b48b3c]" />
+              <span className="text-xs sm:text-sm font-medium text-[#b48b3c]">Maternity Photography</span>
             </div>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight">
             Celebrate Your
             <span className="block text-[#b48b3c]">Pregnancy Journey</span>
           </h1>
-          <p className="text-xl md:text-2xl text-[#232323]/80 max-w-3xl mx-auto font-light leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-[#232323]/80 max-w-3xl mx-auto font-light leading-relaxed">
             Capture the beauty, strength, and love of motherhood with our professional maternity photography sessions.
           </p>
           
           {/* Trust Indicators */}
-          <div className="flex justify-center items-center space-x-8 mt-8">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-8 mt-6 sm:mt-8">
             <div className="flex items-center space-x-2">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#b48b3c] text-[#b48b3c]" />
+                  <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-[#b48b3c] text-[#b48b3c]" />
                 ))}
               </div>
-              <span className="text-sm font-medium text-[#232323]">5.0 Rating</span>
+              <span className="text-xs sm:text-sm font-medium text-[#232323]">5.0 Rating</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Users className="w-4 h-4 text-[#b48b3c]" />
-              <span className="text-sm font-medium text-[#232323]">200+ Happy Moms</span>
+              <Users className="w-3 h-3 sm:w-4 sm:h-4 text-[#b48b3c]" />
+              <span className="text-xs sm:text-sm font-medium text-[#232323]">200+ Happy Moms</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 py-12 sm:py-20 relative z-10">
         {/* Why Choose Us Section */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 py-2 mb-6">
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="inline-flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 py-2 mb-4 sm:mb-6">
             <div className="w-2 h-2 bg-[#b48b3c] rounded-full"></div>
             <span className="text-sm font-medium text-[#b48b3c]">Why Choose Us</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#232323] mb-8 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#232323] mb-6 sm:mb-8 tracking-tight leading-tight">
             Experience the Perfect
             <span className="block text-[#b48b3c]">Maternity Session</span>
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            <div className="bg-white border border-[#f3e7d9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="bg-[#b48b3c]/10 p-4 rounded-2xl w-fit mx-auto mb-6">
-                <Camera className="w-8 h-8 text-[#b48b3c]" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
+            <div className="bg-white border border-[#f3e7d9] rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-[#b48b3c]/10 p-3 sm:p-4 rounded-2xl w-fit mx-auto mb-4 sm:mb-6">
+                <Camera className="w-6 h-6 sm:w-8 sm:h-8 text-[#b48b3c]" />
               </div>
-              <h3 className="text-xl font-bold text-[#232323] mb-4">Professional Studio</h3>
-              <p className="text-[#232323]/70">Our state-of-the-art studio provides the perfect setting with professional lighting and comfortable amenities.</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#232323] mb-3 sm:mb-4">Professional Studio</h3>
+              <p className="text-[#232323]/70 text-sm sm:text-base">Our state-of-the-art studio provides the perfect setting with professional lighting and comfortable amenities.</p>
             </div>
             
-            <div className="bg-white border border-[#f3e7d9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="bg-[#b48b3c]/10 p-4 rounded-2xl w-fit mx-auto mb-6">
-                <Heart className="w-8 h-8 text-[#b48b3c]" />
+            <div className="bg-white border border-[#f3e7d9] rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-[#b48b3c]/10 p-3 sm:p-4 rounded-2xl w-fit mx-auto mb-4 sm:mb-6">
+                <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-[#b48b3c]" />
               </div>
-              <h3 className="text-xl font-bold text-[#232323] mb-4">Comfortable Experience</h3>
-              <p className="text-[#232323]/70">We understand pregnancy can be challenging. Our sessions are designed to be comfortable and relaxing.</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#232323] mb-3 sm:mb-4">Comfortable Experience</h3>
+              <p className="text-[#232323]/70 text-sm sm:text-base">We understand pregnancy can be challenging. Our sessions are designed to be comfortable and relaxing.</p>
             </div>
             
-            <div className="bg-white border border-[#f3e7d9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="bg-[#b48b3c]/10 p-4 rounded-2xl w-fit mx-auto mb-6">
-                <Star className="w-8 h-8 text-[#b48b3c]" />
+            <div className="bg-white border border-[#f3e7d9] rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-[#b48b3c]/10 p-3 sm:p-4 rounded-2xl w-fit mx-auto mb-4 sm:mb-6">
+                <Star className="w-6 h-6 sm:w-8 sm:h-8 text-[#b48b3c]" />
               </div>
-              <h3 className="text-xl font-bold text-[#232323] mb-4">Expert Team</h3>
-              <p className="text-[#232323]/70">Our experienced photographers specialize in maternity photography and know how to capture your beauty perfectly.</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#232323] mb-3 sm:mb-4">Expert Team</h3>
+              <p className="text-[#232323]/70 text-sm sm:text-base">Our experienced photographers specialize in maternity photography and know how to capture your beauty perfectly.</p>
             </div>
           </div>
         </div>
 
         {/* Gallery Section */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-[#232323] mb-4 tracking-tight">Our Maternity Gallery</h2>
-            <p className="text-[#232323]/70 text-lg max-w-2xl mx-auto">
+        <div className="mb-16 sm:mb-20">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#232323] mb-3 sm:mb-4 tracking-tight">Our Maternity Gallery</h2>
+            <p className="text-[#232323]/70 text-base sm:text-lg max-w-2xl mx-auto">
               Take a look at some of our beautiful maternity photography work
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {galleryImages.map((image, index) => (
               <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-                <div className="relative h-80">
+                <div className="relative h-64 sm:h-80">
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white/90 backdrop-blur-sm p-4 rounded-full">
-                      <Camera className="w-6 h-6 text-[#b48b3c]" />
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}
@@ -222,7 +216,7 @@ export default function Maternity() {
           </div>
           
           <div className="grid lg:grid-cols-3 gap-8">
-            {maternityPackages.map((pkg, index) => (
+            {maternityPackages.map((pkg) => (
               <div key={pkg.name} className={`relative bg-white border border-[#f3e7d9] rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 ${pkg.popular ? 'ring-2 ring-[#b48b3c] scale-105' : ''}`}>
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#b48b3c] text-white px-6 py-2 rounded-full text-sm font-semibold">
@@ -237,8 +231,8 @@ export default function Maternity() {
                   <p className="text-[#232323]/70 mb-6">{pkg.description}</p>
                   
                   <div className="space-y-3 mb-8">
-                    {pkg.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center space-x-3">
+                    {pkg.features.map((feature) => (
+                      <div key={feature} className="flex items-center space-x-3">
                         <Check className="w-5 h-5 text-[#b48b3c] flex-shrink-0" />
                         <span className="text-[#232323]/80">{feature}</span>
                       </div>
@@ -264,14 +258,14 @@ export default function Maternity() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white border border-[#f3e7d9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.name} className="bg-white border border-[#f3e7d9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center space-x-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-[#b48b3c] text-[#b48b3c]" />
                   ))}
                 </div>
-                <p className="text-[#232323]/80 mb-6 italic">"{testimonial.text}"</p>
+                <p className="text-[#232323]/80 mb-6 italic">&quot;{testimonial.text}&quot;</p>
                 <div className="flex items-center space-x-3">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden">
                     <Image
@@ -304,7 +298,7 @@ export default function Maternity() {
             </div>
             <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Capture Your Beautiful Journey</h2>
             <p className="text-[#232323]/70 text-lg mb-8 max-w-2xl mx-auto">
-              Don't miss the opportunity to preserve these precious moments. Contact us today to schedule your maternity photography session.
+              Don&apos;t miss the opportunity to preserve these precious moments. Contact us today to schedule your maternity photography session.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

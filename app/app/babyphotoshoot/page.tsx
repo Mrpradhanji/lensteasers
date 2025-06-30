@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { Baby, Camera, Star, Users, Calendar, MapPin, Phone, Mail, ArrowRight, Check, Heart, Gift } from 'lucide-react';
+import { Heart, Camera, Star, Users, Calendar, Phone, ArrowRight, Check, Baby, Gift } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,7 +10,7 @@ const babyPackages = [
     price: "₹6,000",
     duration: "2-3 hours",
     age: "0-14 days",
-    description: "Capture your precious newborn's first days with our gentle, safe photography sessions.",
+    description: "Capture your precious newborn&apos;s first days with our gentle, safe photography sessions.",
     features: [
       "Studio session",
       "Safe newborn posing",
@@ -28,7 +27,7 @@ const babyPackages = [
     price: "₹8,000",
     duration: "2-3 hours",
     age: "3-12 months",
-    description: "Document your baby's growth and milestones with our specialized baby photography.",
+    description: "Document your baby&apos;s growth and milestones with our specialized baby photography.",
     features: [
       "Studio + outdoor session",
       "Multiple setups",
@@ -46,7 +45,7 @@ const babyPackages = [
     price: "₹10,000",
     duration: "3-4 hours",
     age: "1-3 years",
-    description: "Capture your toddler's personality and energy with our fun, interactive sessions.",
+    description: "Capture your toddler&apos;s personality and energy with our fun, interactive sessions.",
     features: [
       "Studio + outdoor session",
       "Multiple locations",
@@ -75,7 +74,7 @@ const testimonials = [
   {
     name: "Meera Kapoor",
     rating: 5,
-    text: "The baby photoshoot was absolutely perfect! The photographer was so patient with our little one and the photos are absolutely stunning. We'll treasure them forever.",
+    text: "The baby photoshoot was absolutely perfect! The photographer was so patient with our little one and the photos are absolutely stunning. We&apos;ll treasure them forever.",
     image: "/images/Maternity1.jpg"
   },
   {
@@ -87,7 +86,7 @@ const testimonials = [
   {
     name: "Priya Verma",
     rating: 5,
-    text: "The milestone session for our 6-month-old was incredible. The photographer knew exactly how to capture our baby's personality. Highly recommend!",
+    text: "The milestone session for our 6-month-old was incredible. The photographer knew exactly how to capture our baby&apos;s personality. Highly recommend!",
     image: "/images/Maternity3.jpg"
   }
 ];
@@ -138,7 +137,7 @@ export default function BabyPhotoshoot() {
             </div>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
-            Capture Your Baby's
+            Capture Your Baby&apos;s
             <span className="block text-[#b48b3c]">Precious Moments</span>
           </h1>
           <p className="text-xl md:text-2xl text-[#232323]/80 max-w-3xl mx-auto font-light leading-relaxed">
@@ -212,8 +211,8 @@ export default function BabyPhotoshoot() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {babyTips.map((tip, index) => (
-              <div key={index} className="bg-white border border-[#f3e7d9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            {babyTips.map((tip) => (
+              <div key={tip.title} className="bg-white border border-[#f3e7d9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="bg-[#b48b3c]/10 p-4 rounded-2xl w-fit mb-6">
                   <tip.icon className="w-8 h-8 text-[#b48b3c]" />
                 </div>
@@ -234,8 +233,8 @@ export default function BabyPhotoshoot() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+            {galleryImages.map((image) => (
+              <div key={image.src} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
                 <div className="relative h-80">
                   <Image
                     src={image.src}
@@ -265,7 +264,7 @@ export default function BabyPhotoshoot() {
           </div>
           
           <div className="grid lg:grid-cols-3 gap-8">
-            {babyPackages.map((pkg, index) => (
+            {babyPackages.map((pkg) => (
               <div key={pkg.name} className={`relative bg-white border border-[#f3e7d9] rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 ${pkg.popular ? 'ring-2 ring-[#b48b3c] scale-105' : ''}`}>
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#b48b3c] text-white px-6 py-2 rounded-full text-sm font-semibold">
@@ -307,19 +306,19 @@ export default function BabyPhotoshoot() {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#232323] mb-4 tracking-tight">What Parents Say</h2>
             <p className="text-[#232323]/70 text-lg max-w-2xl mx-auto">
-              Hear from the happy families who trusted us with their baby's photos
+              Hear from the happy families who trusted us with their baby&apos;s photos
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white border border-[#f3e7d9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.name} className="bg-white border border-[#f3e7d9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center space-x-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-[#b48b3c] text-[#b48b3c]" />
                   ))}
                 </div>
-                <p className="text-[#232323]/80 mb-6 italic">"{testimonial.text}"</p>
+                <p className="text-[#232323]/80 mb-6 italic">&ldquo;{testimonial.text}&rdquo;</p>
                 <div className="flex items-center space-x-3">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden">
                     <Image
@@ -350,9 +349,9 @@ export default function BabyPhotoshoot() {
               <Baby className="w-4 h-4 text-[#b48b3c]" />
               <span className="text-sm font-medium text-[#b48b3c]">Ready to Book?</span>
             </div>
-            <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Capture Your Baby's Precious Moments</h2>
+            <h2 className="text-4xl font-bold text-[#232323] mb-6 tracking-tight">Capture Your Baby&apos;s Precious Moments</h2>
             <p className="text-[#232323]/70 text-lg mb-8 max-w-2xl mx-auto">
-              Don't let these precious moments slip away. Contact us today to schedule your baby's photography session and create memories that will last a lifetime.
+              Don&apos;t let these precious moments slip away. Contact us today to schedule your baby&apos;s photography session and create memories that will last a lifetime.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

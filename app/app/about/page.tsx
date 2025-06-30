@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { Instagram, Linkedin, ArrowUp, Camera, Users, Award, Heart } from 'lucide-react';
+import Image from 'next/image';
 
 const studioImages = [
   { src: '/images/Maternity_Home.jpg', alt: 'Studio Maternity Session' },
@@ -58,7 +59,6 @@ export default function About() {
   const [modalImg, setModalImg] = useState<{ src: string; alt: string } | null>(null);
   const [showScroll, setShowScroll] = useState(false);
   const [imageErrors, setImageErrors] = useState<{[key: string]: boolean}>({});
-  const [visibleIndices, setVisibleIndices] = useState<number[]>([]);
   const modalRef = useRef<HTMLDivElement>(null);
   const gridRefs = useRef<(HTMLDivElement | null)[]>([]);
   const teamRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -111,29 +111,6 @@ export default function About() {
   }, [modalImg]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = gridRefs.current.findIndex((el) => el === entry.target);
-            if (index !== -1) {
-              setVisibleIndices((prev) => [...new Set([...prev, index])]);
-            }
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    gridRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-    teamRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
     const onScroll = () => setShowScroll(window.scrollY > 300);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -146,35 +123,38 @@ export default function About() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-50 to-gray-100 py-20 lg:py-32">
+      <section className="relative bg-gradient-to-br from-slate-50 to-gray-100 py-16 sm:py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Capturing Life's <span className="block text-[#b48b3c]">Beautiful Moments</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div className="space-y-6 sm:space-y-8">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                Capturing Life&apos;s <span className="block text-[#b48b3c]">Beautiful Moments</span>
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
                 Lens Teasers is a team of passionate photographers dedicated to capturing the most significant moments in your life.
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-base sm:text-lg text-gray-600">
                 We specialize in baby, maternity, wedding, and event photography, offering both photography and editing services in Delhi NCR.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {studioImages.map((img, idx) => (
                 <div key={idx} className={`relative overflow-hidden rounded-2xl shadow-xl ${idx === 1 ? 'col-span-2' : ''}`}>
                   {imageErrors[img.src] ? (
-                    <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
-                      <Camera className="w-8 h-8 mx-auto mb-2" />
+                    <div className="w-full h-48 sm:h-64 bg-gray-200 flex items-center justify-center">
+                      <Camera className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2" />
                       <p className="text-xs text-center">{img.alt}</p>
                     </div>
                   ) : (
-                    <img
+                    <Image
                       src={img.src}
                       alt={img.alt}
-                      className="object-cover w-full h-64 hover:scale-105 transition-transform duration-500"
+                      width={400}
+                      height={256}
+                      className="object-cover w-full h-48 sm:h-64 hover:scale-105 transition-transform duration-500"
                       onError={() => handleImageError(img.src)}
-                      onLoad={() => handleImageLoad(img.src)}
+                      onLoadingComplete={() => handleImageLoad(img.src)}
+                      priority={idx === 0}
                     />
                   )}
                 </div>
@@ -185,17 +165,17 @@ export default function About() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, idx) => (
               <div key={idx} className="text-center space-y-3">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full">
-                  <stat.icon className="w-8 h-8 text-[#b48b3c]" />
+                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full">
+                  <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#b48b3c]" />
                 </div>
                 <div className="space-y-1">
-                  <div className="text-3xl font-bold text-gray-900">{stat.number}</div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-gray-900">{stat.number}</div>
+                  <div className="text-xs sm:text-sm text-gray-600">{stat.label}</div>
                 </div>
               </div>
             ))}
@@ -233,12 +213,15 @@ export default function About() {
                       <p className="text-sm text-center">{img.alt}</p>
                     </div>
                   ) : (
-                    <img
+                    <Image
                       src={img.src}
                       alt={img.alt}
+                      width={400}
+                      height={320}
                       className="object-cover w-full h-80 group-hover:scale-105 transition-transform duration-500"
                       onError={() => handleImageError(img.src)}
-                      onLoad={() => handleImageLoad(img.src)}
+                      onLoadingComplete={() => handleImageLoad(img.src)}
+                      priority={idx === 0}
                     />
                   )}
                 </div>
@@ -272,11 +255,14 @@ export default function About() {
                 <div className="relative bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
                   <div className="relative mb-6">
                     <div className="w-32 h-32 mx-auto rounded-full overflow-hidden ring-4 ring-blue-100">
-                      <img 
-                        src={member.img} 
-                        alt={member.name} 
-                        className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300" 
+                      <Image
+                        src={member.img}
+                        alt={member.name}
+                        width={128}
+                        height={128}
+                        className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
                         onError={() => handleImageError(member.img)}
+                        priority={idx === 0}
                       />
                     </div>
                   </div>
@@ -407,12 +393,14 @@ export default function About() {
             aria-modal="true"
             role="dialog"
           >
-            <img
+            <Image
               src={modalImg.src}
               alt={modalImg.alt || 'Preview'}
               className="object-cover rounded-xl mb-4 w-full"
+              width={400}
+              height={256}
               onError={() => handleImageError(modalImg.src)}
-              onLoad={() => handleImageLoad(modalImg.src)}
+              onLoadingComplete={() => handleImageLoad(modalImg.src)}
             />
             <button
               aria-label="Close modal"
