@@ -4,6 +4,16 @@ import { useState, useRef } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, Star, Heart, Camera, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { emailjsConfig } from '../config/emailjs';
+import { z } from 'zod';
+import './contactErrorStyles.css';
+
+const contactSchema = z.object({
+  name: z.string().min(2, 'Name is required'),
+  email: z.string().email('Enter a valid email'),
+  phone: z.string().regex(/^\d{10}$/, 'Enter a valid 10-digit phone number'),
+  subject: z.string().min(3, 'Subject is required'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -14,6 +24,7 @@ export default function Contact() {
     subject: '',
     message: ''
   });
+  const [formErrors, setFormErrors] = useState<Partial<Record<keyof typeof formData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -21,6 +32,20 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
+
+    // Zod validation
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof typeof formData, string>> = {};
+      result.error.errors.forEach(err => {
+        const field = err.path[0] as keyof typeof formData;
+        fieldErrors[field] = err.message;
+      });
+      setFormErrors(fieldErrors);
+      setIsSubmitting(false);
+      return;
+    }
+    setFormErrors({});
 
     try {
       const result = await emailjs.sendForm(
@@ -234,7 +259,7 @@ export default function Contact() {
               
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="group">
+                  <div className={`group ${formErrors.name ? 'error-input' : ''}`}>
                     <label htmlFor="name" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                       Full Name *
                     </label>
@@ -246,13 +271,19 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 sm:px-4 py-3 sm:py-4 border-2 text-black border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base"
+                        className={`w-full px-3 sm:px-4 py-3 sm:py-4 border-2 text-black border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base`}
                         placeholder="Enter your full name"
                       />
                       <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      {formErrors.name && (
+                        <div className="absolute left-0 top-full mt-1 flex items-center gap-1 bg-red-50 border border-red-200 text-red-700 px-2 py-1 rounded shadow transition-all duration-200 animate-fade-in">
+                          <AlertCircle className="w-4 h-4" />
+                          <span className="text-xs">{formErrors.name}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className="group">
+                  <div className={`group ${formErrors.email ? 'error-input' : ''}`}>
                     <label htmlFor="email" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                       Email Address *
                     </label>
@@ -264,16 +295,22 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 sm:px-4 text-black py-3 sm:py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base"
+                        className={`w-full px-3 sm:px-4 text-black py-3 sm:py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base`}
                         placeholder="Enter your email"
                       />
                       <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      {formErrors.email && (
+                        <div className="absolute left-0 top-full mt-1 flex items-center gap-1 bg-red-50 border border-red-200 text-red-700 px-2 py-1 rounded shadow transition-all duration-200 animate-fade-in">
+                          <AlertCircle className="w-4 h-4" />
+                          <span className="text-xs">{formErrors.email}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="group">
+                  <div className={`group ${formErrors.phone ? 'error-input' : ''}`}>
                     <label htmlFor="phone" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                       Phone Number
                     </label>
@@ -284,13 +321,19 @@ export default function Contact() {
                         name="user_phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-3 sm:px-4 text-black py-3 sm:py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base"
+                        className={`w-full px-3 sm:px-4 text-black py-3 sm:py-4 border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base`}
                         placeholder="Enter your phone number"
                       />
                       <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      {formErrors.phone && (
+                        <div className="absolute left-0 top-full mt-1 flex items-center gap-1 bg-red-50 border border-red-200 text-red-700 px-2 py-1 rounded shadow transition-all duration-200 animate-fade-in">
+                          <AlertCircle className="w-4 h-4" />
+                          <span className="text-xs">{formErrors.phone}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className="group">
+                  <div className={`group ${formErrors.subject ? 'error-input' : ''}`}>
                     <label htmlFor="subject" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                       Subject *
                     </label>
@@ -301,7 +344,7 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 sm:px-4 py-3 sm:py-4 text-black border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 appearance-none text-sm sm:text-base"
+                        className={`w-full px-3 sm:px-4 py-3 sm:py-4 text-black border-2 border-[#f3e7d9] rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 bg-white group-hover:border-[#b48b3c]/50 appearance-none text-sm sm:text-base`}
                       >
                         <option value="">Select a subject</option>
                         <option value="booking">Photo Session Booking</option>
@@ -313,11 +356,17 @@ export default function Contact() {
                       <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
                         <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#b48b3c]"></div>
                       </div>
+                      {formErrors.subject && (
+                        <div className="absolute left-0 top-full mt-1 flex items-center gap-1 bg-red-50 border border-red-200 text-red-700 px-2 py-1 rounded shadow transition-all duration-200 animate-fade-in">
+                          <AlertCircle className="w-4 h-4" />
+                          <span className="text-xs">{formErrors.subject}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
 
-                <div className="group">
+                <div className={`group ${formErrors.message ? 'error-input' : ''}`}>
                   <label htmlFor="message" className="block text-sm font-semibold text-[#232323] mb-2 sm:mb-3">
                     Your Message *
                   </label>
@@ -329,10 +378,16 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-3 sm:px-4 py-3 sm:py-4 border-2 border-[#f3e7d9] text-black rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 resize-none bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base"
+                      className={`w-full px-3 sm:px-4 py-3 sm:py-4 border-2 border-[#f3e7d9] text-black rounded-xl focus:ring-2 focus:ring-[#b48b3c] focus:border-[#b48b3c] transition-all duration-300 resize-none bg-white group-hover:border-[#b48b3c]/50 text-sm sm:text-base`}
                       placeholder="Tell us about your photography vision, preferred dates, or any questions you have..."
                     />
                     <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-transparent via-[#b48b3c]/20 to-transparent rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    {formErrors.message && (
+                      <div className="absolute left-0 top-full mt-1 flex items-center gap-1 bg-red-50 border border-red-200 text-red-700 px-2 py-1 rounded shadow transition-all duration-200 animate-fade-in">
+                        <AlertCircle className="w-4 h-4" />
+                        <span className="text-xs">{formErrors.message}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 

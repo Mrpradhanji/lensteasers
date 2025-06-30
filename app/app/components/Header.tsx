@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import React from 'react';
 import { m } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -29,6 +30,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
@@ -61,16 +63,24 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="relative uppercase tracking-widest text-sm font-semibold text-[#232323] hover:text-[#b48b3c] px-2 py-1 transition-colors duration-200 group"
-            >
-              {link.name}
-              <span className="absolute left-1/2 -bottom-1 w-0 group-hover:w-3/4 h-0.5 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300" style={{ transform: 'translateX(-50%)' }}></span>
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`relative uppercase tracking-widest text-sm font-semibold px-2 py-1 transition-colors duration-200 group
+                  ${isActive ? 'text-[#b48b3c] underline underline-offset-4 decoration-[#b48b3c]' : 'text-[#232323] hover:text-[#b48b3c]'}
+                `}
+              >
+                {link.name}
+                <span className={`absolute left-1/2 -bottom-1 h-0.5 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300
+                  ${isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'}`}
+                  style={{ transform: 'translateX(-50%)' }}
+                ></span>
+              </Link>
+            );
+          })}
           
           {/* Services Dropdown */}
           <div 
@@ -128,18 +138,26 @@ export default function Header() {
       {/* Mobile nav */}
       <nav className={`fixed top-0 left-0 w-full h-full z-50 flex flex-col items-center justify-center bg-white/90 dark:bg-[#232323]/95 backdrop-blur-2xl transition-all duration-300 ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'} md:hidden`}>
         <ul className="flex flex-col gap-8 text-2xl font-bold uppercase tracking-widest text-[#232323] dark:text-white">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <Link
-                href={link.href}
-                className="relative px-4 py-2 hover:text-[#b48b3c] transition-colors duration-200 group"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.name}
-                <span className="absolute left-1/2 -bottom-1 w-0 group-hover:w-3/4 h-1 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300" style={{ transform: 'translateX(-50%)' }}></span>
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+            return (
+              <li key={link.name}>
+                <Link
+                  href={link.href}
+                  className={`relative px-4 py-2 transition-colors duration-200 group
+                    ${isActive ? 'text-[#b48b3c] underline underline-offset-4 decoration-[#b48b3c]' : 'hover:text-[#b48b3c]'}
+                  `}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.name}
+                  <span className={`absolute left-1/2 -bottom-1 h-1 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300
+                    ${isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'}`}
+                    style={{ transform: 'translateX(-50%)' }}
+                  ></span>
+                </Link>
+              </li>
+            );
+          })}
           
           {/* Mobile Services Section */}
           <li className="text-center">

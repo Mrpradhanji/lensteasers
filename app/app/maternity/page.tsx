@@ -336,10 +336,7 @@ export default function Maternity() {
                 <span>Book Your Session</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <button className="bg-white border-2 border-[#b48b3c] text-[#b48b3c] hover:bg-[#b48b3c] hover:text-white py-4 px-8 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>Call Us</span>
-              </button>
+             
             </div>
           </div>
         </div>
