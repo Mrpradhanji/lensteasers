@@ -74,10 +74,7 @@ export default function Header() {
                 `}
               >
                 {link.name}
-                <span className={`absolute left-1/2 -bottom-1 h-0.5 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300
-                  ${isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'}`}
-                  style={{ transform: 'translateX(-50%)' }}
-                ></span>
+                
               </Link>
             );
           })}
