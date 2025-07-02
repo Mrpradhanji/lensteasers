@@ -22,7 +22,6 @@ const serviceLinks = [
   { name: "Birthday Event Photography", href: "/services/birthday-events" },
   { name: "Maternity Shoot", href: "/maternity" },
   { name: "Baby & Kids Photography", href: "/babyphotoshoot" },
-  { name: "Product Photography", href: "/services/product-photography" },
   { name: "Cinematography", href: "/services/cinematography" },
 ];
 

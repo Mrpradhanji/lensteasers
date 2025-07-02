@@ -9,56 +9,66 @@ import { ShimmerLoader } from '../components/GradientButton';
 
 const babyPackages = [
   {
-    name: "Newborn Session",
-    price: "₹6,000",
-    duration: "2-3 hours",
-    age: "0-14 days",
-    description: "Capture your precious newborn&apos;s first days with our gentle, safe photography sessions.",
+    name: "Baby Photography Mini Session",
+    price: "₹4,999",
+    duration: "45 Minutes",
+    description: "Capture your baby's sweetest moments with our gentle, safe photography sessions.",
+
     features: [
-      "Studio session",
-      "Safe newborn posing",
-      "Professional editing",
-      "15 edited photos",
-      "Online gallery",
-      "Print rights",
-      "Props included"
+      "45 Minutes Studio Session",
+      "10 Edited Photos",
+      "2 Themes Selection",
+      "All Raw Images",
+      "Outfits Included"
     ],
     popular: false
   },
   {
-    name: "Baby Milestone",
-    price: "₹8,000",
-    duration: "2-3 hours",
-    age: "3-12 months",
-    description: "Document your baby&apos;s growth and milestones with our specialized baby photography.",
+    name: "Baby Photography Silver Package",
+    price: "₹7,999",
+    duration: "1 Hour Studio Session",
+    description: "Document your baby & toddler growth and milestones with our specialized baby photography.",
     features: [
-      "Studio + outdoor session",
-      "Multiple setups",
-      "Professional editing",
-      "25 edited photos",
-      "Online gallery",
-      "Print rights",
-      "Props included",
-      "Family shots"
+      "1 Hour Studio Session",
+      "15 Edited Photos",
+      "3 Themes Selection",
+      "All Raw Images",
+      "Outfits Included",
+      "One Photo Frame 12x18 Inches"
     ],
     popular: true
   },
   {
-    name: "Toddler Adventure",
-    price: "₹10,000",
-    duration: "3-4 hours",
-    age: "1-3 years",
-    description: "Capture your toddler&apos;s personality and energy with our fun, interactive sessions.",
+    name: "Baby Photography Gold Package",
+    price: "₹11,999",
+    duration: "2 hours Studio Session",
+    description: "Capture your toddler & baby personality and energy with our fun, interactive sessions.",
     features: [
-      "Studio + outdoor session",
-      "Multiple locations",
-      "Professional editing",
-      "35 edited photos",
-      "Online gallery",
-      "Print rights",
-      "Props included",
-      "Family shots",
-      "Candid moments"
+      "2 Hours Studio Session",
+      "30 Edited Photos",
+      "5 Themes Selection",
+      "All Raw Images",
+      "Cake Smash Included",
+      "One Photo Frame 12x12 Inches",
+      "Outfits Included"
+    ],
+    popular: false
+  },
+  {
+    name: "Baby Photography Platinum Package",
+    price: "₹15,999",
+    duration: "3 hours Studio Session & Outdoor Session",
+    description: "Turn their giggles and curiosity into timeless memories with vibrant, interactive shoots.",
+    features: [
+      "3 Hours Studio & Outdoor Session",
+      "40 Edited Photos",
+      "7 Themes Selection",
+      "All Raw Images",
+      "Cake Smash Included",
+      "One Photo Frame 12x12 Inches",
+      "One Photo Frame 14x20 Inches",
+      "Outfits Included",
+      "One Instagram Reel"
     ],
     popular: false
   }
@@ -283,27 +293,21 @@ export default function BabyPhotoshoot() {
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8">
             {babyPackages.map((pkg) => (
-              <div key={pkg.name} className={`relative bg-white border border-[#f3e7d9] rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 ${pkg.popular ? 'ring-2 ring-[#b48b3c] scale-105' : ''}`}>
+              <div key={pkg.name} className={`relative bg-white border border-[#f3e7d9] rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full min-h-[520px] ${pkg.popular ? 'ring-2 ring-[#b48b3c] scale-105' : ''}`}>
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#b48b3c] text-white px-6 py-2 rounded-full text-sm font-semibold">
                     Most Popular
                   </div>
                 )}
-                
-                <div className="p-8">
+                <div className="p-8 flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold text-[#232323]">{pkg.name}</h3>
-                    <div className="bg-[#b48b3c]/10 px-3 py-1 rounded-full">
-                      <span className="text-sm font-medium text-[#b48b3c]">{pkg.age}</span>
-                    </div>
                   </div>
                   <div className="text-3xl font-bold text-[#b48b3c] mb-2">{pkg.price}</div>
-                  <div className="text-[#232323]/60 mb-4">{pkg.duration}</div>
                   <p className="text-[#232323]/70 mb-6">{pkg.description}</p>
-                  
-                  <div className="space-y-3 mb-8">
+                  <div className="space-y-3 mb-8 flex-1">
                     {pkg.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-3">
                         <Check className="w-5 h-5 text-[#b48b3c] flex-shrink-0" />
@@ -311,10 +315,11 @@ export default function BabyPhotoshoot() {
                       </div>
                     ))}
                   </div>
-                  
-                  <button className="w-full bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] hover:from-[#a07a2c] hover:to-[#8b6b1c] text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                    Book This Package
-                  </button>
+                  <Link href="/contact">
+                    <button className="w-full bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] hover:from-[#a07a2c] hover:to-[#8b6b1c] text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 mt-auto">
+                      Book This Package
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}

@@ -81,21 +81,6 @@ const services = [
     href: '/babyphotoshoot'
   },
   {
-    id: 'product',
-    title: 'Product Photography',
-    description: 'Showcase your products in their best light with our professional product photography services. Perfect for e-commerce, catalogs, and marketing materials.',
-    features: [
-      'Studio lighting',
-      'Multiple angles',
-      'Lifestyle shots',
-      'White background',
-      'Detail close-ups',
-      'Batch processing'
-    ],
-    image: '/images/Unsplash.jpg', // Placeholder - replace with product image
-    href: '/services/product-photography'
-  },
-  {
     id: 'cinematography',
     title: 'Cinematography',
     description: 'Bring your special moments to life with our cinematic videography services. From wedding films to event highlights, we create compelling visual stories.',
@@ -118,66 +103,63 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white pt-32">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6] py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#232323] mb-6 tracking-tight">
-            Our Photography Services
+      <section className="relative bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6] py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-[#232323] mb-6 tracking-tight drop-shadow-lg">
+            Discover Our Services
           </h1>
-          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            From capturing your most precious moments to creating stunning visual content, 
-            we offer a comprehensive range of photography and videography services tailored to your needs.
+          <p className="text-xl sm:text-2xl text-gray-700 max-w-2xl mx-auto leading-relaxed mb-4">
+            From capturing your most precious moments to creating stunning visual content, we offer a comprehensive range of photography and videography services tailored to your needs.
           </p>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {services.map((service) => (
               <div
                 key={service.id}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group cursor-pointer"
+                className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group cursor-pointer border border-[#f3e7d9] hover:scale-105"
                 onClick={() => setSelectedService(selectedService === service.id ? null : service.id)}
               >
                 {/* Service Image */}
-                <div className="relative h-48 sm:h-64 overflow-hidden">
+                <div className="relative h-56 sm:h-72 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-lg sm:text-2xl font-bold text-white mb-2">{service.title}</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">{service.title}</h3>
                   </div>
                 </div>
 
                 {/* Service Content */}
-                <div className="p-4 sm:p-6">
-                  <p className="text-gray-600 mb-4 leading-relaxed text-sm sm:text-base">
+                <div className="p-6 flex flex-col justify-between min-h-[260px]">
+                  <p className="text-gray-700 mb-4 leading-relaxed text-base font-medium">
                     {service.description}
                   </p>
-                  
                   {/* Features List */}
                   <div className={`transition-all duration-300 ${selectedService === service.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                    <h4 className="font-semibold text-[#b48b3c] mb-3 text-sm sm:text-base">What&apos;s Included:</h4>
+                    <h4 className="font-semibold text-[#b48b3c] mb-3 text-base">What&apos;s Included:</h4>
                     <ul className="space-y-2 mb-4">
                       {service.features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-xs sm:text-sm text-gray-600">
+                        <li key={index} className="flex items-center text-sm text-gray-600">
                           <span className="w-2 h-2 bg-[#b48b3c] rounded-full mr-3 flex-shrink-0"></span>
                           {feature}
                         </li>
                       ))}
                     </ul>
                   </div>
-
                   {/* CTA Button */}
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+                  <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-4">
                     <button
-                      className="text-[#b48b3c] font-semibold hover:text-[#a07a2c] transition-colors text-sm sm:text-base"
+                      className="text-[#b48b3c] font-semibold hover:text-[#a07a2c] transition-colors text-base px-4 py-2 rounded-full border border-[#b48b3c] bg-white hover:bg-[#f9f6f2] shadow-sm"
                       onClick={(e) => {
                         e.stopPropagation();
                         setSelectedService(selectedService === service.id ? null : service.id);
@@ -187,7 +169,7 @@ export default function ServicesPage() {
                     </button>
                     <Link
                       href={service.href}
-                      className="bg-[#b48b3c] hover:bg-[#a07a2c] text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors w-full sm:w-auto text-center"
+                      className="bg-[#b48b3c] hover:bg-[#a07a2c] text-white px-6 py-2 rounded-full text-base font-semibold transition-colors shadow-md w-full sm:w-auto text-center"
                       onClick={(e) => e.stopPropagation()}
                     >
                       Book Now

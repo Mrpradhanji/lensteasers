@@ -116,8 +116,7 @@ export default function Home() {
       <section className="bg-transparent py-10 sm:py-16 px-2 sm:px-6 md:px-20 lg:px-36 mt-8 mb-12 z-30 rounded-2xl max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-light uppercase tracking-wide text-[#b48b3c]">
-            A Modern Approach <span className="italic lowercase text-black">to an</span>{' '}
-            <span className="font-semibold text-black">Age Old Tradition</span>
+            A Modern Approach
           </h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10 items-start relative">

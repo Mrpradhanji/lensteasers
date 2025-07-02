@@ -37,11 +37,11 @@ export default function WeddingPhotographyPage() {
               
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#b48b3c] mb-2">500+</div>
+                  <div className="text-3xl font-bold text-[#b48b3c] mb-2">100+</div>
                   <div className="text-gray-600">Weddings Captured</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#b48b3c] mb-2">24hr</div>
+                  <div className="text-3xl font-bold text-[#b48b3c] mb-2">2-3 Days</div>
                   <div className="text-gray-600">Quick Preview</div>
                 </div>
               </div>

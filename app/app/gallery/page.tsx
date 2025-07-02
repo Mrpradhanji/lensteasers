@@ -3,16 +3,65 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { Camera, X, ChevronLeft, ChevronRight, Heart, Share2, Sparkles, Eye, Download } from 'lucide-react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { ShimmerLoader } from '../components/GradientButton';
+
 
 // Gallery data with categories
 const galleryData = [
   // Maternity Photos
-  { id: 1, src: '/images/Maternity1.jpg', alt: 'Maternity Session 1', category: 'maternity', title: 'Beautiful Maternity Glow', likes: 128 },
+  { id: 1, src: '/images/Maternity1.jpg', alt: 'Maternity Session 1', category: 'maternity', title: 'Beautiful Maternity Glow1' },
+  { id: 2, src: '/images/Maternity2.jpg', alt: 'Maternity Session 2', category: 'maternity', title: 'Beautiful Maternity Glow2' },
+  { id: 3, src: '/images/Maternity3.jpg', alt: 'Maternity Session 3', category: 'maternity', title: 'Beautiful Maternity Glow3' },
+  
+  { id: 4, src: '/images/Maternity4.jpg', alt: 'Maternity Session 4', category: 'maternity', title: 'Beautiful Maternity Glow4' },
+  { id: 5, src: '/images/Maternity_5.jpg', alt: 'Maternity Session 5', category: 'maternity', title: 'Beautiful Maternity Glow5' },
+  { id: 6, src: '/images/Maternity_6.jpg', alt: 'Maternity Session 6', category: 'maternity', title: 'Beautiful Maternity Glow6' },
+  { id: 7, src: '/images/Maternity_7.jpg', alt: 'Maternity Session 7', category: 'maternity', title: 'Beautiful Maternity Glow7' },
+  { id: 8, src: '/images/Maternity_8.jpg', alt: 'Maternity Session 8', category: 'maternity', title: 'Beautiful Maternity Glow8' },
+  { id: 9, src: '/images/Maternity_9.jpg', alt: 'Maternity Session 9', category: 'maternity', title: 'Beautiful Maternity Glow9' },
+  { id: 10, src: '/images/Maternity_10.jpg', alt: 'Maternity Session 10', category: 'maternity', title: 'Beautiful Maternity Glow10' },
+  { id: 11, src: '/images/Maternity_11.jpg', alt: 'Maternity Session 11', category: 'maternity', title: 'Beautiful Maternity Glow11' },
+  { id: 12, src: '/images/Maternity_12.jpg', alt: 'Maternity Session 12', category: 'maternity', title: 'Beautiful Maternity Glow12' },
+  { id: 13, src: '/images/Maternity_13.jpg', alt: 'Maternity Session 13', category: 'maternity', title: 'Beautiful Maternity Glow13' },
+  { id: 14, src: '/images/Maternity_14.jpg', alt: 'Maternity Session 14', category: 'maternity', title: 'Beautiful Maternity Glow14' },
+  { id: 17, src: '/images/Maternity_17.jpg', alt: 'Maternity Session 17', category: 'maternity', title: 'Beautiful Maternity Glow17' },
+  { id: 18, src: '/images/Maternity_18.jpg', alt: 'Maternity Session 18', category: 'maternity', title: 'Beautiful Maternity Glow18' },
+
  
   
   // Baby Photos
-  { id: 6, src: '/images/Baby0.jpg', alt: 'Baby Session 1', category: 'baby', title: 'Newborn Dreams', likes: 234 },
+  { id: 19, src: '/images/Baby0.jpg', alt: 'Baby Session 1', category: 'baby', title: 'Newborn Dreams' },
+  { id: 20, src: '/images/Baby1.jpg', alt: 'Baby Session 2', category: 'baby', title: 'Newborn Dreams' },
+  { id: 22, src: '/images/Baby3.jpg', alt: 'Baby Session 4', category: 'baby', title: 'Newborn Dreams' },
+  { id: 23, src: '/images/Baby4.jpg', alt: 'Baby Session 5', category: 'baby', title: 'Newborn Dreams' },
+  { id: 24, src: '/images/Baby5.jpg', alt: 'Baby Session 6', category: 'baby', title: 'Newborn Dreams' },
+  { id: 26, src: '/images/Baby7.jpg', alt: 'Baby Session 8', category: 'baby', title: 'Newborn Dreams' },
+  { id: 27, src: '/images/Baby8.jpg', alt: 'Baby Session 9', category: 'baby', title: 'Newborn Dreams' },
+  { id: 28, src: '/images/Baby9.jpg', alt: 'Baby Session 10', category: 'baby', title: 'Newborn Dreams' },
+  { id: 29, src: '/images/Baby10.jpg', alt: 'Baby Session 11', category: 'baby', title: 'Newborn Dreams' },
+  { id: 30, src: '/images/Baby11.jpg', alt: 'Baby Session 12', category: 'baby', title: 'Newborn Dreams' },
+  { id: 31, src: '/images/Baby12.jpg', alt: 'Baby Session 13', category: 'baby', title: 'Newborn Dreams' },
+  { id: 32, src: '/images/Baby13.jpg', alt: 'Baby Session 14', category: 'baby', title: 'Newborn Dreams' },
+  { id: 33, src: '/images/Baby14.jpg', alt: 'Baby Session 15', category: 'baby', title: 'Newborn Dreams' },
+  { id: 34, src: '/images/Baby15.jpg', alt: 'Baby Session 16', category: 'baby', title: 'Newborn Dreams' },
+  { id: 35, src: '/images/Baby16.jpg', alt: 'Baby Session 17', category: 'baby', title: 'Newborn Dreams' },
+  { id: 36, src: '/images/Baby17.jpg', alt: 'Baby Session 18', category: 'baby', title: 'Newborn Dreams' },
+  { id: 37, src: '/images/Baby18.jpg', alt: 'Baby Session 19', category: 'baby', title: 'Newborn Dreams' },
+  { id: 38, src: '/images/Baby19.jpg', alt: 'Baby Session 20', category: 'baby', title: 'Newborn Dreams' },
+  { id: 39, src: '/images/Baby20.jpg', alt: 'Baby Session 21', category: 'baby', title: 'Newborn Dreams' },
+  { id: 40, src: '/images/Baby21.jpg', alt: 'Baby Session 22', category: 'baby', title: 'Newborn Dreams' },
+  { id: 41, src: '/images/Baby22.jpg', alt: 'Baby Session 23', category: 'baby', title: 'Newborn Dreams' },
+  { id: 42, src: '/images/Baby23.jpg', alt: 'Baby Session 24', category: 'baby', title: 'Newborn Dreams' },
+  { id: 43, src: '/images/Baby24.jpg', alt: 'Baby Session 25', category: 'baby', title: 'Newborn Dreams' },
+  { id: 44, src: '/images/Baby25.jpg', alt: 'Baby Session 26', category: 'baby', title: 'Newborn Dreams' },
+  { id: 45, src: '/images/Baby26.jpg', alt: 'Baby Session 27', category: 'baby', title: 'Newborn Dreams' },
+  { id: 46, src: '/images/Baby27.jpg', alt: 'Baby Session 28', category: 'baby', title: 'Newborn Dreams' },
+  { id: 47, src: '/images/Baby28.jpg', alt: 'Baby Session 29', category: 'baby', title: 'Newborn Dreams' },
+  { id: 48, src: '/images/Baby29.jpg', alt: 'Baby Session 30', category: 'baby', title: 'Newborn Dreams' },
+  { id: 49, src: '/images/Baby30.jpg', alt: 'Baby Session 31', category: 'baby', title: 'Newborn Dreams' },
+  { id: 50, src: '/images/Baby31.jpg', alt: 'Baby Session 32', category: 'baby', title: 'Newborn Dreams' },
+  { id: 51, src: '/images/Baby32.jpg', alt: 'Baby Session 33', category: 'baby', title: 'Newborn Dreams' },
+  { id: 52, src: '/images/Baby33.jpg', alt: 'Baby Session 34', category: 'baby', title: 'Newborn Dreams' },
+  
 
 ];
 
@@ -234,10 +283,6 @@ export default function Gallery() {
                   <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-white font-bold text-xl">{image.title}</h3>
-                      <div className="flex items-center gap-2 text-white/80">
-                        <Heart className="w-4 h-4" />
-                        <span className="text-sm">{image.likes}</span>
-                      </div>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-white/80 text-sm capitalize bg-white/20 px-3 py-1 rounded-full">
@@ -248,13 +293,6 @@ export default function Gallery() {
                       </button>
                     </div>
                   </div>
-                </div>
-
-                {/* Floating Action Button */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                  <button className="p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors">
-                    <Download className="w-4 h-4 text-gray-700" />
-                  </button>
                 </div>
               </div>
             ))}
@@ -279,7 +317,7 @@ export default function Gallery() {
             {/* Close button */}
             <button
               onClick={closeModal}
-              className="absolute -top-16 right-0 text-white hover:text-gray-300 transition-colors z-10 p-2 bg-black/50 rounded-full backdrop-blur-sm"
+              className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10 p-2 bg-black/50 rounded-full backdrop-blur-sm"
             >
               <X className="w-6 h-6" />
             </button>
@@ -318,12 +356,12 @@ export default function Gallery() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: imageLoaded[selectedImage.src] ? 1 : 0 }}
                     transition={{ duration: 1.5 }}
-                    className="w-full h-full"
+                    className="w-full h-full flex justify-center items-center"
                   >
                     <Image
                       src={selectedImage.src}
                       alt={selectedImage.alt}
-                      className="w-full rounded-3xl shadow-2xl"
+                      className="rounded-3xl shadow-2xl max-w-[90vw] max-h-[80vh] object-contain"
                       width={1200}
                       height={1500}
                       onLoadingComplete={() => handleImageLoad(selectedImage.src)}
@@ -340,24 +378,9 @@ export default function Gallery() {
                 <span className="text-white/80 capitalize bg-white/20 px-4 py-2 rounded-full">
                   {selectedImage.category}
                 </span>
-                <div className="flex items-center gap-2 text-white/80">
-                  <Heart className="w-5 h-5" />
-                  <span className="font-medium">{selectedImage.likes} likes</span>
-                </div>
               </div>
               <div className="flex justify-center gap-4">
-                <button className="flex items-center gap-3 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300">
-                  <Heart className="w-5 h-5" />
-                  <span>Like</span>
-                </button>
-                <button className="flex items-center gap-3 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300">
-                  <Share2 className="w-5 h-5" />
-                  <span>Share</span>
-                </button>
-                <button className="flex items-center gap-3 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300">
-                  <Download className="w-5 h-5" />
-                  <span>Download</span>
-                </button>
+                {/* All modal action buttons removed except close */}
               </div>
             </div>
 

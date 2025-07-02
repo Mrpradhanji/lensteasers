@@ -41,7 +41,7 @@ export default function CinematographyPage() {
                   <div className="text-gray-600 text-sm sm:text-base">Ultra HD Quality</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-[#b48b3c] mb-1 sm:mb-2">7-14</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-[#b48b3c] mb-1 sm:mb-2">10-15</div>
                   <div className="text-gray-600 text-sm sm:text-base">Days Delivery</div>
                 </div>
               </div>
