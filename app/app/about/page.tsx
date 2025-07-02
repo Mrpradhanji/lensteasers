@@ -12,9 +12,13 @@ const studioImages = [
 ];
 
 const studioEnvironmentImages = [
-  { src: '/images/Maternity2.jpg', alt: 'Studio Setup' },
-  { src: '/images/BabyShoot.jpg', alt: 'Studio Equipment' },
-  { src: '/images/Maternity4.jpg', alt: 'Studio Environment' },
+  { src: '/images/Studio1.jpg', alt: 'Studio Setup' },
+  { src: '/images/Studio2.jpg', alt: 'Studio Equipment' },
+  { src: '/images/Studio3.jpg', alt: 'Studio Environment' },
+  { src: '/images/Studio4.jpg', alt: 'Studio Environment' },
+  { src: '/images/Studio5.jpg', alt: 'Studio Environment' },
+  { src: '/images/Studio6.jpg', alt: 'Studio Environment' },
+ 
 ];
 
 const team = [

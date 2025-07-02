@@ -341,14 +341,19 @@ export default function Home() {
           Video Portfolio
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10 px-0 md:px-8">
-          {[1, 2, 3].map((num) => (
+          {[
+            { title: "Background Video (MP4)", url: "/videos/Maternity_Video1.mp4" },
+            { title: "Background Video (WebM)", url: "/videos/Maternity_Video2.mp4" },
+            { title: "Background Video (MP4)", url: "/videos/Baby_Video1.mp4" },
+          ].map((video, idx) => (
             <div
-              key={num}
+              key={idx}
               className="rounded-xl overflow-hidden shadow-xl bg-white transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
             >
               <div className="aspect-video w-full">
-                <VideoPlayer url={`/videos/portfolio${num}.mp4`} />
+                <VideoPlayer url={video.url} />
               </div>
+              <div className="p-4 text-center font-semibold">{video.title}</div>
             </div>
           ))}
         </div>
