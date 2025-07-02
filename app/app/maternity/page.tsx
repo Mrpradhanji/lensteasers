@@ -5,69 +5,83 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { useState } from 'react';
-import { ShimmerLoader } from '../components/GradientButton';
+
 
 const maternityPackages = [
   {
-    name: "Essential Maternity",
-    price: "₹8,000",
-    duration: "2-3 hours",
+    name: "MINI",
+    price: "₹4,999",
+    duration: "45 Minutes Studio Session",
     description: "Perfect for capturing the beauty of your pregnancy journey",
     features: [
-      "Studio session",
-      "2 outfit changes",
-      "Professional editing",
-      "20 edited photos",
-      "Online gallery",
-      "Print rights"
+      "45 Minutes Studio Session",
+      "6 Edited Photos(Digital Copy)",
+      "All Raw Images(Digital Copy)",
+      "One set up Shoot",
+      "Outfits Included(Maximum 1)"
     ],
     popular: false
   },
   {
-    name: "Premium Maternity",
-    price: "₹12,000",
-    duration: "3-4 hours",
+    name: "SILVER",
+    price: "₹6,999",
+    duration: "1 hour Studio Session",
     description: "Our most popular package with comprehensive coverage",
     features: [
-      "Studio + outdoor session",
-      "3-4 outfit changes",
-      "Professional makeup & hair",
-      "40 edited photos",
-      "Online gallery",
-      "Print rights",
-      "5 printed photos (8x12)",
-      "Family inclusion"
+      "All Raw Images(Digital Copy)",
+      "12 Edited Photos(Digital Copy)",
+      "One 12x18 Inches Photo Frame",
+      "One Gown or drape from Studio",
+      "Two set up Shoot",
+      "Outfits Included(Maximum 2)",
     ],
     popular: true
   },
   {
-    name: "Luxury Maternity",
-    price: "₹18,000",
-    duration: "4-5 hours",
-    description: "Ultimate maternity experience with full luxury treatment",
+    name: "GOLD",
+    price: "₹9,999",
+    duration: "1 hour Studio Session",
+    description: "",
     features: [
-      "Studio + outdoor + home session",
-      "Unlimited outfit changes",
-      "Professional makeup & hair",
-      "60 edited photos",
-      "Online gallery",
-      "Print rights",
-      "10 printed photos (8x12)",
-      "Family inclusion",
-      "Maternity video",
-      "Custom album"
+      "All Raw Pics(Digital copy Only)",
+      "20 Edited Pics (Digital copy Only)",
+      "Album 12x12 Inches Photo Frame",
+      "One Gown or drape from Studio",
+      "Makeup and hair included",
+      "MaximumTwo outfit Shoot",
+      "Three set up Shoot",
+      "Photo reel"
+    ],
+    popular: false
+  },
+  {
+    name: "PLATINUM",
+    price: "₹13,999",
+    duration: "1 hour Studio & Outdoor Session",
+    description: "",
+    features: [
+      "All Raw Pics(Digital copy Only)",
+      "25 Edited Pics (Digital copy Only)",
+      "Album 12x12 Inches Photo Frame",
+      "Frame 14x20 Inches Photo Frame",
+      "One Gown & one drape from Studio",
+      "Makeup and hair included",
+      "Maximum Three outfit Shoot",
+      "Four set up Shoot",
+      "Video reel"
     ],
     popular: false
   }
 ];
 
 const galleryImages = [
-  { src: "/images/Maternity1.jpg", alt: "Maternity Portrait 1" },
-  { src: "/images/Maternity2.jpg", alt: "Maternity Portrait 2" },
-  { src: "/images/Maternity3.jpg", alt: "Maternity Portrait 3" },
-  { src: "/images/Maternity4.jpg", alt: "Maternity Portrait 4" },
-  { src: "/images/Maternity_Home.jpg", alt: "Maternity Portrait 5" },
-  { src: "/images/Maternity_2.jpg", alt: "Maternity Portrait 6" }
+  { src: "/images/Maternity/Maternity1.jpg", alt: "Maternity Portrait 1" },
+  { src: "/images/Maternity/Maternity2.jpg", alt: "Maternity Portrait 2" },
+  { src: "/images/Maternity/Maternity3.jpg", alt: "Maternity Portrait 3" },
+  { src: "/images/Maternity/Maternity4.jpg", alt: "Maternity Portrait 4" },
+  { src: "/images/Maternity/Maternity_5.jpg", alt: "Maternity Portrait 5" },
+  { src: "/images/Maternity/Maternity_6.jpg", alt: "Maternity Portrait 6" },
+  
 ];
 
 const testimonials = [
@@ -75,19 +89,19 @@ const testimonials = [
     name: "Priya Sharma",
     rating: 5,
     text: "The maternity shoot was absolutely magical! The team made me feel so comfortable and beautiful. The photos turned out stunning and I'll treasure them forever.",
-    image: "/images/Baby1.jpg"
+    image: "/images/Baby/Baby1.jpg"
   },
   {
     name: "Anjali Patel",
     rating: 5,
     text: "I was nervous about my maternity shoot, but the photographers were so professional and caring. The results exceeded my expectations completely!",
-    image: "/images/Baby2.jpg"
+    image: "/images/Baby/Baby2.jpg"
   },
   {
     name: "Riya Singh",
     rating: 5,
     text: "Best decision I made during my pregnancy! The photos are breathtaking and the whole experience was so special. Highly recommend!",
-    image: "/images/Baby3.jpg"
+    image: "/images/Baby/Baby3.jpg"
   }
 ];
 
@@ -200,8 +214,8 @@ export default function Maternity() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {galleryImages.map((image, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-                <div className="relative h-64 sm:h-80">
+              <div key={index} className="group relative aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+                <div className="relative w-full h-full">
                   <LazyMotion features={domAnimation}>
                     <m.div
                       initial={{ opacity: 0 }}
@@ -234,7 +248,7 @@ export default function Maternity() {
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8">
             {maternityPackages.map((pkg) => (
               <div key={pkg.name} className={`relative bg-white border border-[#f3e7d9] rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 ${pkg.popular ? 'ring-2 ring-[#b48b3c] scale-105' : ''}`}>
                 {pkg.popular && (

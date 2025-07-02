@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Instagram, Linkedin, ArrowUp, Camera, Users, Award, Heart } from 'lucide-react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { ShimmerLoader } from '../components/GradientButton';
+
 
 const studioImages = [
   { src: '/images/Maternity_Home.jpg', alt: 'Studio Maternity Session' },
@@ -57,7 +57,7 @@ const team = [
 const stats = [
   { icon: Camera, number: '500+', label: 'Sessions Completed' },
   { icon: Users, number: '200+', label: 'Happy Families' },
-  { icon: Award, number: '5+', label: 'Years Experience' },
+  { icon: Award, number: '9+', label: 'Years Experience' },
   { icon: Heart, number: '100%', label: 'Client Satisfaction' },
 ];
 
@@ -143,37 +143,19 @@ export default function About() {
                 We specialize in baby, maternity, wedding, and event photography, offering both photography and editing services in Delhi NCR.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {studioImages.map((img, idx) => (
-                <div key={idx} className={`relative overflow-hidden rounded-2xl shadow-xl ${idx === 1 ? 'col-span-2' : ''}`}>
-                  <LazyMotion features={domAnimation}>
-                    <m.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: imageLoaded[img.src] ? 1 : 0 }}
-                      transition={{ duration: 1.5 }}
-                      className="w-full h-full"
-                    >
-                      {imageErrors[img.src] ? (
-                        <div className="w-full h-48 sm:h-64 bg-gray-200 flex items-center justify-center">
-                          <Camera className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2" />
-                          <p className="text-xs text-center">{img.alt}</p>
-                        </div>
-                      ) : (
-                        <Image
-                          src={img.src}
-                          alt={img.alt}
-                          width={400}
-                          height={256}
-                          className="object-cover w-full h-48 sm:h-64 hover:scale-105 transition-transform duration-500"
-                          onError={() => handleImageError(img.src)}
-                          onLoadingComplete={() => handleImageLoad(img.src)}
-                          priority={idx === 0}
-                        />
-                      )}
-                    </m.div>
-                  </LazyMotion>
-                </div>
-              ))}
+            <div className="grid grid-cols-4 grid-rows-2 gap-6 max-w-5xl mx-auto w-full" style={{ minHeight: '600px' }}>
+              {/* Portrait (left, spans 2 rows and 2 columns) */}
+              <div className="row-span-2 col-span-2 relative rounded-2xl overflow-hidden shadow-xl h-full">
+                <Image src="/images/Maternity/Maternity1.jpg" alt="Studio Maternity Session" fill className="object-cover" />
+              </div>
+              {/* Landscape 1 (top right) */}
+              <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden shadow-xl">
+                <Image src="/images/Studio/Studio1.jpg" alt="Studio Setup" fill className="object-cover" style={{ minHeight: '50%' }} />
+              </div>
+              {/* Landscape 2 (bottom right) */}
+              <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden shadow-xl">
+                <Image src="/images/Baby/BabyShoot.jpg" alt="Studio Baby Session" fill className="object-cover" style={{ minHeight: '50%' }} />
+              </div>
             </div>
           </div>
         </div>
@@ -388,7 +370,7 @@ export default function About() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                 </svg>
               </div>
-              5+ Years of Experience
+              9+ Years of Experience
             </div>
             <div className="flex items-center justify-center">
               <div className="w-8 h-8 bg-[#b48b3c] rounded-full flex items-center justify-center mr-3">

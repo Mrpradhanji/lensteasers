@@ -6,6 +6,7 @@ import emailjs from '@emailjs/browser';
 import { emailjsConfig } from '../config/emailjs';
 import { z } from 'zod';
 import './contactErrorStyles.css';
+import Image from 'next/image';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -104,30 +105,36 @@ export default function Contact() {
         <div className="absolute bottom-40 right-1/3 w-28 h-28 bg-[#f3e7d9]/40 rounded-full blur-2xl"></div>
       </div>
 
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-[#b48b3c] via-[#a07a2c] to-[#8b6b1c] text-white py-20 overflow-hidden">
-        {/* Hero Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}></div>
+      {/* Hero Section with full-width studio image background */}
+      <div className="relative w-full min-h-[400px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Studio Image Background */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Studio/Studio1.jpg"
+            alt="Contact Studio Background"
+            fill
+            className="object-cover w-full h-full"
+            priority
+          />
+          {/* Overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#b48b3c]/80 via-[#a07a2c]/70 to-[#8b6b1c]/80 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
-        
-        <div className="container mx-auto px-4 text-center relative z-10">
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 text-center relative z-10 py-20">
           <div className="flex justify-center mb-6">
             <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-2">
               <Camera className="w-5 h-5" />
               <span className="text-sm font-medium">Professional Photography</span>
             </div>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight text-white drop-shadow-xl">
             Let&apos;s Create
             <span className="block text-[#f3e7d9]">Magic Together</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed">
             Ready to capture your precious moments? We&apos;re here to turn your vision into timeless memories.
           </p>
-          
           {/* Trust Indicators */}
           <div className="flex justify-center items-center space-x-8 mt-8">
             <div className="flex items-center space-x-2">
@@ -136,11 +143,11 @@ export default function Contact() {
                   <Star key={i} className="w-4 h-4 fill-[#f3e7d9] text-[#f3e7d9]" />
                 ))}
               </div>
-              <span className="text-sm font-medium">5.0 Rating</span>
+              <span className="text-sm font-medium text-white">5.0 Rating</span>
             </div>
             <div className="flex items-center space-x-2">
               <Heart className="w-4 h-4 text-[#f3e7d9]" />
-              <span className="text-sm font-medium">500+ Happy Clients</span>
+              <span className="text-sm font-medium text-white">500+ Happy Clients</span>
             </div>
           </div>
         </div>
@@ -217,8 +224,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-[#232323] text-base sm:text-lg mb-1">Business Hours</h3>
-                    <p className="text-[#232323]/80 font-medium text-sm sm:text-base">Monday - Saturday</p>
-                    <p className="text-[#232323]/80 font-medium text-sm sm:text-base">9:00 AM - 7:00 PM</p>
+                    <p className="text-[#232323]/80 font-medium text-sm sm:text-base">Wednesday - Monday</p>
+                    <p className="text-[#232323]/80 font-medium text-sm sm:text-base">10:00 AM - 7:00 PM</p>
                     <p className="text-xs sm:text-sm text-[#232323]/60">Sunday: By appointment only</p>
                   </div>
                 </div>

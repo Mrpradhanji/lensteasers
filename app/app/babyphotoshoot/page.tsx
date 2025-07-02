@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { useState } from 'react';
-import { ShimmerLoader } from '../components/GradientButton';
+
 
 const babyPackages = [
   {
@@ -75,12 +75,12 @@ const babyPackages = [
 ];
 
 const galleryImages = [
-  { src: "/images/Baby0.jpg", alt: "Baby Portrait 1" },
-  { src: "/images/Baby1.jpg", alt: "Baby Portrait 2" },
-  { src: "/images/Baby2.jpg", alt: "Baby Portrait 3" },
-  { src: "/images/Baby3.jpg", alt: "Baby Portrait 4" },
-  { src: "/images/Baby4.jpg", alt: "Baby Portrait 5" },
-  { src: "/images/BabyShoot.jpg", alt: "Baby Portrait 6" }
+  { src: "/images/Baby/Baby18.jpg", alt: "Baby Portrait 1" },
+  { src: "/images/Baby/Baby1.jpg", alt: "Baby Portrait 2" },
+  { src: "/images/Baby/Baby2.jpg", alt: "Baby Portrait 3" },
+  { src: "/images/Baby/Baby3.jpg", alt: "Baby Portrait 4" },
+  { src: "/images/Baby/Baby13.jpg", alt: "Baby Portrait 5" },
+  { src: "/images/Baby/Baby27.jpg", alt: "Baby Portrait 6" }
 ];
 
 const testimonials = [
@@ -88,19 +88,19 @@ const testimonials = [
     name: "Meera Kapoor",
     rating: 5,
     text: "The baby photoshoot was absolutely perfect! The photographer was so patient with our little one and the photos are absolutely stunning. We&apos;ll treasure them forever.",
-    image: "/images/Maternity1.jpg"
+    image: "/images/Maternity/Maternity1.jpg"
   },
   {
     name: "Sneha Reddy",
     rating: 5,
     text: "Our newborn session was magical. The team was so gentle and caring with our baby. The photos captured every precious detail perfectly!",
-    image: "/images/Maternity2.jpg"
+    image: "/images/Maternity/Maternity2.jpg"
   },
   {
     name: "Priya Verma",
     rating: 5,
     text: "The milestone session for our 6-month-old was incredible. The photographer knew exactly how to capture our baby&apos;s personality. Highly recommend!",
-    image: "/images/Maternity3.jpg"
+    image: "/images/Maternity/Maternity3.jpg"
   }
 ];
 

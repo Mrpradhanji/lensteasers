@@ -22,13 +22,6 @@
 *.png
 *.gif
 *.webp
-#ignore optimized images
-/public/images/optimized/
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.webp
 # testing
 /coverage
 
