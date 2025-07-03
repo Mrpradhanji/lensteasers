@@ -126,13 +126,20 @@ export default function Header() {
             <span className={`block w-6 h-0.5 bg-[#b48b3c] rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
           </div>
         </button>
+        {/* TEST BUTTON FOR DEBUGGING */}
+        <button
+          className="md:hidden ml-2 p-2 rounded border-2 border-blue-500 bg-blue-100 text-blue-900"
+          onClick={() => alert('Test button clicked!')}
+        >
+          Test Button
+        </button>
       </div>
 
       {/* Mobile menu overlay */}
-      <div 
+      {/* <div 
         className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-lg transition-all duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         onClick={() => setMenuOpen(false)}
-      ></div>
+      ></div> */}
 
       {/* Mobile nav */}
       <nav className={`fixed top-0 left-0 w-full h-full z-50 flex flex-col items-center justify-center bg-white/90 dark:bg-[#232323]/95 backdrop-blur-2xl transition-all duration-300 ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'} md:hidden`} style={{ WebkitOverflowScrolling: 'touch' }}>
