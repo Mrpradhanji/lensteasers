@@ -115,8 +115,8 @@ export default function Header() {
 
         {/* Hamburger for mobile */}
         <button
-          className="md:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#b48b3c] z-20 relative touch-manipulation"
-          onClick={() => setMenuOpen((open) => !open)}
+          className="md:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#b48b3c] z-20 relative touch-manipulation border-2 border-red-500"
+          onClick={() => { console.log('Hamburger clicked'); setMenuOpen((open) => !open); }}
           aria-label="Toggle navigation menu"
           style={{ WebkitTapHighlightColor: 'transparent' }}
         >
