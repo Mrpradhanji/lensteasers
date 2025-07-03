@@ -143,11 +143,11 @@ export default function Contact() {
                   <Star key={i} className="w-4 h-4 fill-[#f3e7d9] text-[#f3e7d9]" />
                 ))}
               </div>
-              <span className="text-sm font-medium text-white">5.0 Rating</span>
+              <span className="text-sm font-medium text-white">4.9 Rating</span>
             </div>
             <div className="flex items-center space-x-2">
               <Heart className="w-4 h-4 text-[#f3e7d9]" />
-              <span className="text-sm font-medium text-white">500+ Happy Clients</span>
+              <span className="text-sm font-medium text-white">6000+ Happy Clients</span>
             </div>
           </div>
         </div>
@@ -226,7 +226,7 @@ export default function Contact() {
                     <h3 className="font-bold text-[#232323] text-base sm:text-lg mb-1">Business Hours</h3>
                     <p className="text-[#232323]/80 font-medium text-sm sm:text-base">Wednesday - Monday</p>
                     <p className="text-[#232323]/80 font-medium text-sm sm:text-base">10:00 AM - 7:00 PM</p>
-                    <p className="text-xs sm:text-sm text-[#232323]/60">Sunday: By appointment only</p>
+                    
                   </div>
                 </div>
               </div>

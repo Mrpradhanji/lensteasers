@@ -10,7 +10,18 @@
 !.yarn/releases
 !.yarn/versions
 
-{/*# ignore videos /public/videos/ *.mp4 *.mov *.webm # ignore images /public/images/ *.jpg *.jpeg *.png *.gif *.webp */}
+# ignore videos 
+/public/videos/ 
+*.mp4 
+*.mov 
+*.webm 
+# ignore images 
+/public/images/ 
+*.jpg 
+*.jpeg 
+*.png 
+*.gif 
+*.webp 
 # testing
 /coverage
 

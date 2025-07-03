@@ -18,34 +18,40 @@ const studioEnvironmentImages = [
 
 const team = [
   {
-    name: 'Priya Sharma',
-    role: 'Lead Photographer',
+    name: 'DEVESH',
+    role: 'Founder',
     img: 'https://randomuser.me/api/portraits/women/68.jpg',
-    desc: 'Specializes in maternity and newborn shoots with a creative, gentle approach.',
-    socials: {
-      instagram: '#',
-      linkedin: '#',
-    },
+    desc: 'Founder Devesh blends creativity and care, crafting heartfelt maternity and newborn portraits with artistic finesse.',
   },
   {
-    name: 'Amit Verma',
-    role: 'Studio Manager',
+    name: 'ABHISHEK',
+    role: 'Co-founder, candid photographer, and cinematographer',
     img: 'https://randomuser.me/api/portraits/men/32.jpg',
     desc: 'Ensures every session runs smoothly and clients feel at home.',
-    socials: {
-      instagram: '#',
-      linkedin: '#',
-    },
   },
   {
-    name: 'Riya Kapoor',
+    name: 'KARAN',
+    role: 'Candid Photographer & Cinematographer',
+    img: 'https://randomuser.me/api/portraits/women/65.jpg',
+    desc: 'Captures real emotions with cinematic flair, blending storytelling and creativity into every candid moment.',
+  },
+  {
+    name: 'DHRUV',
+    role: 'Photo Editor',
+    img: 'https://randomuser.me/api/portraits/men/32.jpg',
+    desc: 'Skilled in enhancing details and tones, Dhruv crafts each photo into a captivating visual story.',
+  },
+  {
+    name: 'PREMPAL',
     role: 'Photo Editor',
     img: 'https://randomuser.me/api/portraits/women/65.jpg',
-    desc: 'Brings every photo to life with expert retouching and color work.',
-    socials: {
-      instagram: '#',
-      linkedin: '#',
-    },
+    desc: 'Transforms raw images into stunning visuals with precision, color mastery, and a creative touch.',
+  },
+  {
+    name: 'AKANKSHA',
+    role: 'Marketing & Client Relations',
+    img: 'https://randomuser.me/api/portraits/women/65.jpg',
+    desc: 'Transforms raw images into stunning visuals with precision, color mastery, and a creative touch.',
   },
 ];
 
@@ -281,26 +287,6 @@ export default function About() {
                     <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
                     <p className="text-[#b48b3c] font-semibold">{member.role}</p>
                     <p className="text-gray-600 text-sm leading-relaxed">{member.desc}</p>
-                    <div className="flex justify-center gap-4 pt-4">
-                      <a 
-                        href={member.socials.instagram} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-gray-400 hover:text-pink-500 transition-colors duration-300"
-                        aria-label={`${member.name} Instagram`}
-                      >
-                        <Instagram className="w-5 h-5" />
-                      </a>
-                      <a 
-                        href={member.socials.linkedin} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-gray-400 hover:text-blue-600 transition-colors duration-300"
-                        aria-label={`${member.name} LinkedIn`}
-                      >
-                        <Linkedin className="w-5 h-5" />
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
