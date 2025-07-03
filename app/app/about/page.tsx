@@ -5,11 +5,6 @@ import Image from 'next/image';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 
-const studioImages = [
-  { src: '/images/Maternity_Home.jpg', alt: 'Studio Maternity Session' },
-  { src: '/images/NewBorn.jpg', alt: 'Studio Baby Session' },
-  { src: '/images/Maternity3.jpg', alt: 'Studio Portrait' },
-];
 
 const studioEnvironmentImages = [
   { src: '/images/Studio1.jpg', alt: 'Studio Setup' },

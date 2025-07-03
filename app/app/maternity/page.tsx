@@ -1,6 +1,6 @@
 'use client';
 
-import { Heart, Camera, Star, Users, Phone, ArrowRight, Check } from 'lucide-react';
+import { Heart, Camera, Star, Users, ArrowRight, Check } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { LazyMotion, domAnimation, m } from 'framer-motion';

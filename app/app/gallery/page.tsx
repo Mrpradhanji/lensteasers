@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Camera, X, ChevronLeft, ChevronRight, Heart, Share2, Sparkles, Eye, Download } from 'lucide-react';
+import { Camera, X, ChevronLeft, ChevronRight, Heart, Sparkles, Eye } from 'lucide-react';
 import Image from 'next/image';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 

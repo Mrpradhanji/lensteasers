@@ -50,19 +50,6 @@ function VideoPlayer({ url }: { url: string }) {
   );
 }
 
-const cardContainerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const cardItemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
 
 export default function Home() {
   const [imageLoaded, setImageLoaded] = useState<{ [src: string]: boolean }>({});

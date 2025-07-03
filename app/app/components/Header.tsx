@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import React from 'react';
-import { m } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
