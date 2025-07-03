@@ -123,7 +123,19 @@ export default function Maternity() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-white text-black py-16 sm:py-20 overflow-hidden">
+      <div className="relative w-full min-h-[400px] md:min-h-[600px]  flex items-center justify-center overflow-hidden">
+        {/* Studio Image Background */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Maternity_BackgroundPage2.jpg"
+            alt="Contact Studio Background"
+            fill
+            className="object-cover w-full h-full"
+            priority
+          />
+          
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
         {/* Hero Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -133,33 +145,16 @@ export default function Maternity() {
         
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="flex justify-center mb-4 sm:mb-6">
-            <div className="flex items-center space-x-2 bg-[#b48b3c]/10 rounded-full px-4 sm:px-6 py-2">
-              <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-[#b48b3c]" />
-              <span className="text-xs sm:text-sm font-medium text-[#b48b3c]">Maternity Photography</span>
-            </div>
+            
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight">
-            Celebrate Your
-            <span className="block text-[#b48b3c]">Pregnancy Journey</span>
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-[#232323]/80 max-w-3xl mx-auto font-light leading-relaxed">
-            Capture the beauty, strength, and love of motherhood with our professional maternity photography sessions.
-          </p>
-          
-          {/* Trust Indicators */}
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-8 mt-6 sm:mt-8">
-            <div className="flex items-center space-x-2">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-[#b48b3c] text-[#b48b3c]" />
-                ))}
-              </div>
-              <span className="text-xs sm:text-sm font-medium text-[#232323]">5.0 Rating</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Users className="w-3 h-3 sm:w-4 sm:h-4 text-[#b48b3c]" />
-              <span className="text-xs sm:text-sm font-medium text-[#232323]">200+ Happy Moms</span>
-            </div>
+          <div className="relative z-10 text-center pt-20 sm:pt-32 md:pt-48 pb-12">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight">
+              Celebrate Your
+              <span className="block text-[#b48b3c]">Pregnancy Journey</span>
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl text-black max-w-3xl mx-auto font-light leading-relaxed">
+              Capture the beauty, strength, and love of motherhood with our professional maternity photography sessions.
+            </p>          
           </div>
         </div>
       </div>

@@ -5,14 +5,25 @@ import Link from 'next/link';
 
 export default function BirthdayEventsPage() {
   return (
-    <div className="min-h-screen bg-white pt-32">
+    <div className="min-h-screen bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6]">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6] py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#232323] mb-6 tracking-tight">
-            Birthday Event Photography
+      <section className="relative min-h-[400px] md:min-h-[600px] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Birthday/birthday9.jpg"
+            alt="Birthday Hero Background"
+            fill
+            className="object-cover w-full h-full"
+            priority
+          />
+        </div>
+        {/* Overlay */}
+        <div className="container mx-auto px-4 text-center relative z-10 pt-48 pb-12">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#b48b3c] mb-6 tracking-tight drop-shadow-lg">
+            Birthday Events
           </h1>
-          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-white max-w-3xl mx-auto leading-relaxed">
             Make every birthday celebration unforgettable with our event photography services. 
             From intimate family gatherings to grand birthday parties, we capture all the joy and excitement.
           </p>
@@ -49,7 +60,7 @@ export default function BirthdayEventsPage() {
             
             <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/Baby1.jpg"
+                src="/images/Birthday/birthday.jpg"
                 alt="Birthday Event Photography"
                 fill
                 className="object-cover"

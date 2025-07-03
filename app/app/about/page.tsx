@@ -137,11 +137,12 @@ export default function About() {
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Capturing Life&apos;s <span className="block text-[#b48b3c]">Beautiful Moments</span>
               </h1>
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-                Lens Teasers is a team of passionate photographers dedicated to capturing the most significant moments in your life.
+              <p className="text-lg sm:text-xl    text-gray-600 leading-relaxed">
+                Lensteasers is a group of passionate photographers dedicated to capturing the most meaningful moments in their clients’ lives. From child, wedding, event, and portfolio shoots to commercial work, we bring creativity and expertise to every project. We also specialize in infant and maternity sessions, highlighting the beauty and emotion of these milestones for mothers and families.
               </p>
-              <p className="text-base sm:text-lg text-gray-600">
-                We specialize in baby, maternity, wedding, and event photography, offering both photography and editing services in Delhi NCR.
+
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mt-4">
+                Based in Delhi and the NCR, our team offers both photography and professional editing services with a strong focus on quality and client satisfaction. At Lensteasers, we&apos;re committed to preserving cherished memories through a thoughtful and artistic lens.
               </p>
             </div>
             <div className="grid grid-cols-4 grid-rows-2 gap-6 max-w-5xl mx-auto w-full" style={{ minHeight: '600px' }}>

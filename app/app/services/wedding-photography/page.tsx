@@ -3,18 +3,40 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+const weddingImages = [
+  '/images/Wedding/Wedding_0.jpg',
+  '/images/Wedding/Wedding_1.jpg',
+  '/images/Wedding/Wedding_3.jpg',
+  '/images/Wedding/Wedding_4.jpg',
+  '/images/Wedding/Wedding_5.jpg',
+  '/images/Wedding/Wedding_6.jpg',
+  '/images/Wedding/Wedding_7.jpg',
+  '/images/Wedding/Wedding_8.jpg',
+  '/images/Wedding/Wedding_9.jpg',
+];
+
 export default function WeddingPhotographyPage() {
   return (
-    <div className="min-h-screen bg-white pt-32">
+    <div className="min-h-screen bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6]">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6] py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#232323] mb-6 tracking-tight">
+      <section className="relative min-h-[400px] md:min-h-[600px] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Wedding/Wedd.jpg"
+            alt="Wedding Hero Background"
+            fill
+            className="object-cover w-full h-full"
+            priority
+          />
+        </div>
+        {/* Overlay */}
+        <div className="container mx-auto px-4 text-center relative z-10 pt-48 pb-12">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#b48b3c] mb-6 tracking-tight drop-shadow-lg">
             Wedding Photography
           </h1>
-          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Capture every precious moment of your special day with our comprehensive wedding photography services. 
-            From the first look to the last dance, we document your celebration with artistry and care.
+          <p className="text-lg sm:text-xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow">
+            Capture every precious moment of your special day with our comprehensive wedding photography services. From the first look to the last dance, we document your celebration with artistry and care.
           </p>
         </div>
       </section>
@@ -49,7 +71,7 @@ export default function WeddingPhotographyPage() {
             
             <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/Maternity_Home.jpg"
+                src="/images/Wedding/Wedding_.jpg"
                 alt="Wedding Photography"
                 fill
                 className="object-cover"
@@ -61,7 +83,7 @@ export default function WeddingPhotographyPage() {
       </section>
 
       {/* What's Included */}
-      <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#232323] mb-12">What&apos;s Included in Your Package</h2>
           
@@ -130,8 +152,30 @@ export default function WeddingPhotographyPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] py-16 px-4 sm:px-6 lg:px-8">
+     
+
+      {/* Portfolio Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-[#232323] mb-12">Portfolio</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {weddingImages.map((src, idx) => (
+              <div key={idx} className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
+                <Image
+                  src={src}
+                  alt={`Wedding Portfolio ${idx + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+       {/* CTA Section */}
+       <section className="bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Book Your Wedding Photography?</h2>
           <p className="text-lg mb-8 text-white/90">
@@ -144,12 +188,7 @@ export default function WeddingPhotographyPage() {
             >
               Get in Touch
             </Link>
-            <Link
-              href="/gallery"
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-[#b48b3c] transition-colors"
-            >
-              View Wedding Gallery
-            </Link>
+
           </div>
         </div>
       </section>

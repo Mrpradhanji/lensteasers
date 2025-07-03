@@ -5,16 +5,26 @@ import Link from 'next/link';
 
 export default function CinematographyPage() {
   return (
-    <div className="min-h-screen bg-white pt-32">
+    <div className="min-h-screen bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6]">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6] py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#232323] mb-6 tracking-tight">
+      <section className="relative min-h-[400px] md:min-h-[600px] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Cinema3.jpg"
+            alt="Cinematography Hero Background"
+            fill
+            className="object-cover w-full h-full"
+            priority
+          />
+        </div>
+        {/* Overlay */}
+        <div className="container mx-auto px-4 text-center relative z-10 pt-48 pb-12">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#b48b3c] mb-6 tracking-tight drop-shadow-lg">
             Cinematography
           </h1>
-          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Bring your special moments to life with our cinematic videography services. 
-            From wedding films to event highlights, we create compelling visual stories.
+          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow">
+            Relive your most precious moments with cinematic storytelling. Our expert team crafts beautiful films that capture the emotion, energy, and magic of your special day.
           </p>
         </div>
       </section>
@@ -49,7 +59,7 @@ export default function CinematographyPage() {
             
             <div className="relative h-64 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/Maternity1.jpg"
+                src="/images/Cinema2.jpg"
                 alt="Cinematography"
                 fill
                 className="object-cover"
@@ -142,12 +152,6 @@ export default function CinematographyPage() {
               className="bg-white text-[#b48b3c] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
             >
               Start Your Project
-            </Link>
-            <Link
-              href="/gallery"
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-[#b48b3c] transition-colors"
-            >
-              View Video Gallery
             </Link>
           </div>
         </div>
