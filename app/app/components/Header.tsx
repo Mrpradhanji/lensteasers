@@ -115,23 +115,27 @@ export default function Header() {
 
         {/* Hamburger for mobile */}
         <button
-          className="md:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#b48b3c] z-20 relative"
+          className="md:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#b48b3c] z-20 relative touch-manipulation"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label="Toggle navigation menu"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-          <span className="block w-7 h-7 relative">
-            <span className={`absolute left-1/2 top-2 w-6 h-0.5 bg-[#b48b3c] rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : '-translate-x-1/2'}`}></span>
-            <span className={`absolute left-1/2 top-4 w-6 h-0.5 bg-[#b48b3c] rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : '-translate-x-1/2'}`}></span>
-            <span className={`absolute left-1/2 top-6 w-6 h-0.5 bg-[#b48b3c] rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : '-translate-x-1/2'}`}></span>
-          </span>
+          <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1">
+            <span className={`block w-6 h-0.5 bg-[#b48b3c] rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-[#b48b3c] rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-[#b48b3c] rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+          </div>
         </button>
       </div>
 
       {/* Mobile menu overlay */}
-      <div className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-lg transition-all duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}></div>
+      <div 
+        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-lg transition-all duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setMenuOpen(false)}
+      ></div>
 
       {/* Mobile nav */}
-      <nav className={`fixed top-0 left-0 w-full h-full z-50 flex flex-col items-center justify-center bg-white/90 dark:bg-[#232323]/95 backdrop-blur-2xl transition-all duration-300 ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'} md:hidden`}>
+      <nav className={`fixed top-0 left-0 w-full h-full z-50 flex flex-col items-center justify-center bg-white/90 dark:bg-[#232323]/95 backdrop-blur-2xl transition-all duration-300 ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'} md:hidden`} style={{ WebkitOverflowScrolling: 'touch' }}>
         <ul className="flex flex-col gap-8 text-2xl font-bold uppercase tracking-widest text-[#232323] dark:text-white">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
@@ -139,10 +143,11 @@ export default function Header() {
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className={`relative px-4 py-2 transition-colors duration-200 group
+                  className={`relative px-4 py-2 transition-colors duration-200 group touch-manipulation
                     ${isActive ? 'text-[#b48b3c] underline underline-offset-4 decoration-[#b48b3c]' : 'hover:text-[#b48b3c]'}
                   `}
                   onClick={() => setMenuOpen(false)}
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {link.name}
                   <span className={`absolute left-1/2 -bottom-1 h-1 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300
@@ -166,8 +171,9 @@ export default function Header() {
                 <li key={service.name}>
                   <Link
                     href={service.href}
-                    className="relative px-4 py-2 hover:text-[#b48b3c] transition-colors duration-200 group"
+                    className="relative px-4 py-2 hover:text-[#b48b3c] transition-colors duration-200 group touch-manipulation"
                     onClick={() => setMenuOpen(false)}
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
                     {service.name}
                     <span className="absolute left-1/2 -bottom-1 w-0 group-hover:w-3/4 h-0.5 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded transition-all duration-300" style={{ transform: 'translateX(-50%)' }}></span>
