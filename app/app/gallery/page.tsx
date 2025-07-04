@@ -151,29 +151,28 @@ export default function Gallery() {
   }, [selectedCategory, nextImage, prevImage]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50">
-      {/* Hero Section with Parallax Effect */}
-      <section className="relative py-20 overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-[#b48b3c]/20 to-[#f3e7d9]/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-l from-[#b48b3c]/15 to-[#f9f0e9]/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-[#b48b3c]/10 to-transparent rounded-full blur-2xl animate-pulse delay-500"></div>
+    <div className="min-h-screen bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6]">
+      {/* Hero Section with Background Image */}
+      <section className="relative w-full min-h-[500px] md:min-h-[800px] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/Gall.jpg"
+            alt="Gallery Hero Background"
+            fill
+            className="object-cover w-full h-full"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm text-gray-600 mb-6">
-            <Sparkles className="w-4 h-4 text-[#b48b3c]" />
-            Premium Photography Collection
-          </div>
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 text-center relative z-10">
           
-          <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 drop-shadow-lg">
             Our <span className="bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] bg-clip-text text-transparent">Gallery</span>
           </h1>
-          
-          <div className="w-32 h-1 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded-full mx-auto mb-8"></div>
-          
-          <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <div className="w-32 h-1 bg-gradient-to-r from-[#b48b3c] to-[#e7d6c6] rounded-full mx-auto mb-8 opacity-80"></div>
+          <p className="text-xl lg:text-2xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow">
             Explore our collection of beautiful moments captured with love and care. 
             Each image tells a unique story of joy, love, and precious memories.
           </p>
@@ -181,7 +180,7 @@ export default function Gallery() {
       </section>
 
       {/* Modern Filter Section */}
-      <section className="sticky top-0 z-40 py-4 sm:py-6 bg-white/80 backdrop-blur-xl border-b border-gray-100/50">
+      <section className="sticky top-0 z-40 py-4 sm:py-6 bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6] border-b border-gray-100/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* Category Filters */}
