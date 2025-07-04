@@ -15,10 +15,10 @@ const galleryImages = [
   { src: '/images/Maternity2.jpg', alt: 'Maternity Shoot 2' },
   { src: '/images/Maternity3.jpg', alt: 'Maternity Shoot 3' },
   { src: '/images/Maternity4.jpg', alt: 'Maternity Shoot 4' },
-  { src: '/images/Baby1.jpg', alt: 'Baby Shoot 1' },
+  { src: '/images/Baby/Baby11.jpg', alt: 'Baby Shoot 1' },
   { src: '/images/Baby2.jpg', alt: 'Baby Shoot 2' },
   { src: '/images/Baby3.jpg', alt: 'Baby Shoot 3' },
-  { src: '/images/Baby4.jpg', alt: 'Baby Shoot 4' },
+  { src: '/images/Baby/Baby30.jpg', alt: 'Baby Shoot 4' },
 ];
 
 // Dynamically import ReactPlayer with no SSR
@@ -77,8 +77,8 @@ export default function Home() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
-          <source src="/videos/Background_Video.mp4" type="video/mp4" />
-          <source src="/videos/Background_Video.webm" type="video/webm" />
+          <source src="/videos/Background_Video__.mp4" type="video/mp4" />
+          <source src="/videos/Back.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/10 to-[#232323]/80 z-10" />
@@ -328,9 +328,9 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10 px-0 md:px-8">
           {[
-            { title: "Background Video (MP4)", url: "/videos/Maternity_Video1.mp4" },
-            { title: "Background Video (WebM)", url: "/videos/Maternity_Video2.mp4" },
-            { title: "Background Video (MP4)", url: "/videos/Baby_Video1.mp4" },
+            { title: "Background Video1", url: "/videos/Baby_Video1.mp4" },
+            { title: "Background Video2", url: "/videos/Maternity_Video1.mp4" },
+            { title: "Background Video3", url: "/videos/Maternity_Video2.mp4" },
           ].map((video, idx) => (
             <div
               key={idx}

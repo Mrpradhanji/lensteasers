@@ -19,16 +19,21 @@ export default function WeddingPhotographyPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f9f6f2] via-[#f3e7d9] to-[#e7d6c6]">
       {/* Hero Section */}
-      <section className="relative min-h-[400px] md:min-h-[600px] flex items-center overflow-hidden">
+ {/* Background Image */}
+        <section className="relative flex items-center justify-center min-h-screen w-full pt-32 sm:pt-40 md:pt-56 px-2 sm:px-4">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/Wedding/Wedd.jpg"
-            alt="Wedding Hero Background"
-            fill
-            className="object-cover w-full h-full"
-            priority
-          />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/videos/Background_Video1.mp4" type="video/mp4" />
+          <source src="/videos/Back2.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
         </div>
         {/* Overlay */}
         <div className="container mx-auto px-4 text-center relative z-10 pt-48 pb-12">

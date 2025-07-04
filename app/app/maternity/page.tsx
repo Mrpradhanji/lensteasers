@@ -127,7 +127,7 @@ export default function Maternity() {
         {/* Studio Image Background */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Maternity_BackgroundPage2.jpg"
+            src="/images/MAT.jpg"
             alt="Contact Studio Background"
             fill
             className="object-cover w-full h-full"
