@@ -8,6 +8,8 @@ import GradientButton from './components/GradientButton';
 import { ShimmerLoader } from './components/GradientButton';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { emailjsConfig } from './config/emailjs';
+import * as emailjs from '@emailjs/browser';
 
 // Replace galleryImages with real images
 const galleryImages = [
@@ -50,14 +52,123 @@ function VideoPlayer({ url }: { url: string }) {
   );
 }
 
+function PopupModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+    try {
+      await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        {
+          user_name: name,
+          user_phone: phone,
+          subject: 'Popup Lead',
+          message: `Name: ${name}\nPhone: ${phone}`,
+        },
+        emailjsConfig.publicKey
+      );
+      setSuccess(true);
+      setName('');
+      setPhone('');
+
+      //Auto close
+      setTimeout (() => {
+        onClose();
+        setSuccess(false);
+      },2000)
+    } catch (err) {
+      setError('Failed to send. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-md mx-auto bg-white rounded-3xl shadow-2xl p-8 sm:p-10 border border-[#f3e7d9] animate-modalPop">
+        <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-[#b48b3c] text-2xl font-bold transition-colors">&times;</button>
+        <div className="flex flex-col items-center mb-4">
+          <div className="w-14 h-14 bg-gradient-to-br from-[#b48b3c]/20 to-[#e7d6c6]/40 rounded-full flex items-center justify-center mb-2">
+            <svg className="w-7 h-7 text-[#b48b3c]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 1 0-8 0c0 4-2 5-2 7a6 6 0 0 0 12 0c0-2-2-3-2-7z" /><circle cx="12" cy="17" r="1" /></svg>
+          </div>
+          <h2 className="text-2xl font-bold text-[#b48b3c] mb-1">Get in Touch</h2>
+          <p className="text-gray-500 text-sm mb-2">Let us know your details and we'll reach out soon!</p>
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="w-full border border-[#f3e7d9] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#b48b3c] text-gray-900 placeholder-gray-400 transition-all"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            className="w-full border border-[#f3e7d9] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#b48b3c] text-gray-900 placeholder-gray-400 transition-all"
+            value={phone}
+            onChange={e => setPhone(e.target.value)}
+            required
+          />
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-[#b48b3c] to-[#a07a2c] text-white py-3 rounded-xl font-semibold hover:from-[#a07a2c] hover:to-[#8b6b1c] transition-all shadow-lg hover:shadow-xl text-lg"
+            disabled={loading}
+          >
+            {loading ? 'Sending...' : 'Submit'}
+          </button>
+        </form>
+        {success && <div className="text-green-600 text-center mt-4">Thank you! We will contact you soon.</div>}
+        {error && <div className="text-red-600 text-center mt-4">{error}</div>}
+      </div>
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease;
+        }
+        @keyframes modalPop {
+          0% { transform: scale(0.95) translateY(30px); opacity: 0; }
+          100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .animate-modalPop {
+          animation: modalPop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+      `}</style>
+    </div>
+  );
+}
 
 export default function Home() {
   const [imageLoaded, setImageLoaded] = useState<{ [src: string]: boolean }>({});
   const pathname = usePathname();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     // Reset imageLoaded state when navigating to the home page
     setImageLoaded({});
+    if (typeof window === 'undefined') return;
+    const hasShown = localStorage.getItem('popup_shown');
+    if (!hasShown) {
+      const timer = setTimeout(() => {
+        setShowModal(true);
+        localStorage.setItem('popup_shown', 'true');
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
   }, [pathname]);
 
   const handleImageLoad = (src: string) => {
@@ -66,6 +177,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen w-full bg-white text-white overflow-x-hidden">
+      <PopupModal open={showModal} onClose={() => setShowModal(false)} />
       {/* Hero Section with Video */}
       <section
         className="relative flex items-center justify-center min-h-screen w-full pt-32 sm:pt-40 md:pt-56 px-2 sm:px-4"
