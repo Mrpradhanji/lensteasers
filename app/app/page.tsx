@@ -195,10 +195,10 @@ export default function Home() {
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/10 to-[#232323]/80 z-10" />
         <div className="relative z-20 flex flex-col items-center justify-center text-center text-white px-2 sm:px-4 py-20 sm:py-32 w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 drop-shadow-xl tracking-tight">
-           Premium Baby Photoshoot & Maternity Shoot
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6  drop-shadow-xl tracking-tight">
+           Premium Baby Photoshoot <span className="text-[#b48b3c]">& Maternity Shoot</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-2xl max-w-2xl mb-10 text-white drop-shadow-lg font-light">
+          <p className="text-base sm:text-lg md:text-2xl max-w-2xl mb-10 text-black drop-shadow-lg font-light">
             Capturing your most precious moments with creativity and passion. Specializing in baby, maternity. Capturing your most precious moments with creativity, care, and heartfelt storytelling. Specializing in newborn, infant, and maternity photography that turns memories into timeless treasures.
           </p>
           <Link
@@ -258,22 +258,22 @@ export default function Home() {
           {/* Right image (pulled up) */}
           <div className="relative h-[300px] sm:h-[400px] md:h-[500px]">
             <div className="absolute top-[-1rem] sm:top-[-2rem] right-0 w-full h-full">
-              {!imageLoaded['/images/Baby0.jpg'] && (
+              {!imageLoaded['/images/Baby/Baby24.jpg'] && (
                 <ShimmerLoader className="absolute inset-0" />
               )}
               <LazyMotion features={domAnimation}>
                 <m.div
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: imageLoaded['/images/Baby0.jpg'] ? 1 : 0 }}
+                  animate={{ opacity: imageLoaded['/images/Baby/Baby24.jpg'] ? 1 : 0 }}
                   transition={{ duration: 1.5 }}
                   className="w-full h-full"
                 >
                   <Image
-                    src="/images/Baby0.jpg"
+                    src="/images/Baby/Baby24.jpg"
                     alt="Bride by the Mountain"
                     fill
-                    className={`object-cover rounded-lg transition-opacity duration-500 ${imageLoaded['/images/Baby0.jpg'] ? 'opacity-100' : 'opacity-0'}`}
-                    onLoadingComplete={() => handleImageLoad('/images/Baby0.jpg')}
+                    className={`object-cover rounded-lg transition-opacity duration-500 ${imageLoaded['/images/Baby/Baby24.jpg'] ? 'opacity-100' : 'opacity-0'}`}
+                    onLoadingComplete={() => handleImageLoad('/images/Baby/Baby24.jpg')}
                     loading="lazy"
                   />
                 </m.div>
