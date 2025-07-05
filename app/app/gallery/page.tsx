@@ -46,7 +46,7 @@ const galleryData = [
  
   
   // Baby Photos
-  { id: 33, src: '/images/Baby/Baby0.jpg', alt: 'Baby Session 1', category: 'baby', title: 'Newborn Dreams' },
+  { id: 33, src: '/images/Baby/Baby00.jpg', alt: 'Baby Session 1', category: 'baby', title: 'Newborn Dreams' },
   { id: 34, src: '/images/Baby/Baby1.jpg', alt: 'Baby Session 2', category: 'baby', title: 'Newborn Dreams' },
   { id: 35, src: '/images/Baby/Baby3.jpg', alt: 'Baby Session 4', category: 'baby', title: 'Newborn Dreams' },
   { id: 36, src: '/images/Baby/Baby4.jpg', alt: 'Baby Session 5', category: 'baby', title: 'Newborn Dreams' },

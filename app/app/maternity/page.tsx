@@ -152,7 +152,7 @@ export default function Maternity() {
               Celebrate Your
               <span className="block text-[#b48b3c]">Pregnancy Journey</span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-black max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white max-w-3xl mx-auto font-light leading-relaxed">
               Capture the beauty, strength, and love of motherhood with our professional maternity photography sessions.
             </p>          
           </div>

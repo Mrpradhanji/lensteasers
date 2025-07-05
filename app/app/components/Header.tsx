@@ -9,8 +9,9 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Gallery", href: "/gallery" },
-  { name: "Maternity PhotoShoot", href: "/maternity" },
-  { name: "Baby PhotoShoot", href: "/babyphotoshoot" },
+  { name: "Maternity", href: "/maternity" },
+  { name: "Baby", href: "/babyphotoshoot" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];
 

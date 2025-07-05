@@ -14,7 +14,7 @@ import * as emailjs from '@emailjs/browser';
 // Replace galleryImages with real images
 const galleryImages = [
   { src: '/images/Maternity1.jpg', alt: 'Maternity Shoot 1' },
-  { src: '/images/Maternity2.jpg', alt: 'Maternity Shoot 2' },
+  { src: '/images/Maternity/Maternity_9.jpg', alt: 'Maternity Shoot 2' },
   { src: '/images/Maternity3.jpg', alt: 'Maternity Shoot 3' },
   { src: '/images/Maternity4.jpg', alt: 'Maternity Shoot 4' },
   { src: '/images/Baby/Baby11.jpg', alt: 'Baby Shoot 1' },
@@ -198,7 +198,7 @@ export default function Home() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6  drop-shadow-xl tracking-tight">
            Premium Baby Photoshoot <span className="text-[#b48b3c]">& Maternity Shoot</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-2xl max-w-2xl mb-10 text-black drop-shadow-lg font-light">
+          <p className="text-base sm:text-lg md:text-2xl max-w-2xl mb-10 text-white drop-shadow-lg font-light">
             Capturing your most precious moments with creativity and passion. Specializing in baby, maternity. Capturing your most precious moments with creativity, care, and heartfelt storytelling. Specializing in newborn, infant, and maternity photography that turns memories into timeless treasures.
           </p>
           <Link

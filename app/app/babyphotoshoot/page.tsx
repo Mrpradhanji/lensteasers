@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { useState } from 'react';
+import BabyThemes from '../components/BabyThemes';
 
 
 const babyPackages = [
@@ -80,7 +81,16 @@ const galleryImages = [
   { src: "/images/Baby/Baby2.jpg", alt: "Baby Portrait 3" },
   { src: "/images/Baby/Baby3.jpg", alt: "Baby Portrait 4" },
   { src: "/images/Baby/Baby13.jpg", alt: "Baby Portrait 5" },
-  { src: "/images/Baby/Baby27.jpg", alt: "Baby Portrait 6" }
+  { src: "/images/Themes/Frozen1.jpg", alt: "Baby Portrait 6" },
+  { src: "/images/Themes/Harry1.jpg", alt: "Baby Portrait 7" },
+  { src: "/images/Themes/Music1.jpg", alt: "Baby Portrait 8" },
+  { src: "/images/Themes/LifeStyle1.jpg", alt: "Baby Portrait 9" },
+  { src: "/images/Themes/LifeStyle2.jpg", alt: "Baby Portrait 10" },
+  { src: "/images/Themes/LifeStyle3.jpg", alt: "Baby Portrait 11" },
+  { src: "/images/Themes/Baby003.jpg", alt: "Baby Portrait 12" },
+  { src: "/images/Baby/Baby33.jpg", alt: "Baby Portrait 13" },
+  { src: "/images/Baby/Baby10.jpg", alt: "Baby Portrait 14" },
+  { src: "/images/Baby/Baby11.jpg", alt: "Baby Portrait 15" },
 ];
 
 const testimonials = [
@@ -124,8 +134,6 @@ const babyTips = [
 
 export default function BabyPhotoshoot() {
   const [imageLoaded, setImageLoaded] = useState<{ [src: string]: boolean }>({});
-  const [activeTheme, setActiveTheme] = useState(0);
-  const [showAllThemes, setShowAllThemes] = useState(false);
 
   const handleImageLoad = (src: string) => {
     setImageLoaded((prev) => ({ ...prev, [src]: true }));
@@ -248,74 +256,7 @@ export default function BabyPhotoshoot() {
         </div>
 
         {/* Themes Section */}
-        <section className="max-w-4xl mx-auto mb-20">
-          <h2 className="text-3xl font-bold text-center text-[#b48b3c] mb-8">Popular Baby Photoshoot Themes</h2>
-          <div className="flex justify-center gap-4 mb-8 flex-wrap">
-            {['Sailor', 'Balloon', 'Music', 'Cake Smash'].map((theme, idx) => (
-              <button
-                key={theme}
-                className={`px-6 py-2 rounded-full font-semibold border transition-colors duration-200 ${activeTheme === idx ? 'bg-[#b48b3c] text-white border-[#b48b3c] shadow-lg' : 'bg-white text-[#b48b3c] border-[#b48b3c]'}`}
-                onClick={() => setActiveTheme(idx)}
-              >
-                {theme}
-              </button>
-            ))}
-          </div>
-          <div className="bg-white/90 rounded-3xl shadow-2xl p-0 sm:p-0 mb-6 flex flex-col sm:flex-row items-center overflow-hidden border border-[#f3e7d9]">
-            {activeTheme === 0 && (
-              <>
-                <div className="relative w-full sm:w-1/2 aspect-[4/5] min-h-[320px] sm:min-h-[420px] flex-shrink-0">
-                  <Image src="/images/Baby/Baby1.jpg" alt="Sailor Theme" fill className="object-contain" />
-                </div>
-                <div className="w-full sm:w-1/2 p-8 flex flex-col justify-center items-start">
-                  <h3 className="text-2xl font-bold text-[#b48b3c] mb-4">Space</h3>
-                  <p className="text-[#232323] text-lg leading-relaxed">Stars, planets, and rocket ships set the scene for a cosmic adventure. Perfect for capturing your little astronaut imagination and wonder.</p>
-                </div>
-              </>
-            )}
-            {activeTheme === 1 && (
-              <>
-                <div className="relative w-full sm:w-1/2 aspect-[4/5] min-h-[320px] sm:min-h-[420px] flex-shrink-0">
-                  <Image src="/images/Baby/Baby2.jpg" alt="Balloon Theme" fill className="object-contain" />
-                </div>
-                <div className="w-full sm:w-1/2 p-8 flex flex-col justify-center items-start">
-                  <h3 className="text-2xl font-bold text-[#b48b3c] mb-4">Balloon</h3>
-                  <p className="text-[#232323] text-lg leading-relaxed">Colorful balloons, festive backdrops, and joyful expressions. Great for birthdays and milestone celebrations.</p>
-                </div>
-              </>
-            )}
-            {activeTheme === 2 && (
-              <>
-                <div className="relative w-full sm:w-1/2 aspect-[4/5] min-h-[320px] sm:min-h-[420px] flex-shrink-0">
-                  <Image src="/images/Baby/Baby3.jpg" alt="Music Theme" fill className="object-contain" />
-                </div>
-                <div className="w-full sm:w-1/2 p-8 flex flex-col justify-center items-start">
-                  <h3 className="text-2xl font-bold text-[#b48b3c] mb-4">Music</h3>
-                  <p className="text-[#232323] text-lg leading-relaxed">Instruments, notes, and a playful musical setting for your baby star. Perfect for music-loving families.</p>
-                </div>
-              </>
-            )}
-            {activeTheme === 3 && (
-              <>
-                <div className="relative w-full sm:w-1/2 aspect-[4/5] min-h-[320px] sm:min-h-[420px] flex-shrink-0">
-                  <Image src="/images/Cake.jpg" alt="Cake Smash Theme" fill className="object-contain" />
-                </div>
-                <div className="w-full sm:w-1/2 p-8 flex flex-col justify-center items-start">
-                  <h3 className="text-2xl font-bold text-[#b48b3c] mb-4">Cake Smash</h3>
-                  <p className="text-[#232323] text-lg leading-relaxed">Fun, messy, and adorable moments with a birthday cake. Capture the joy and excitement of your baby's first cake experience.</p>
-                </div>
-              </>
-            )}
-          </div>
-          <div className="text-center">
-            <button
-              className="inline-block px-8 py-3 rounded-full bg-[#b48b3c] text-white font-semibold shadow hover:bg-[#a07a2c] transition-colors mb-4"
-            >
-             40+ Themes
-            </button>
-          </div>
-        
-        </section>
+        <BabyThemes />
 
         {/* Gallery Section */}
         <div className="mb-20">

@@ -56,8 +56,8 @@ const team = [
 ];
 
 const stats = [
-  { icon: Camera, number: '500+', label: 'Sessions Completed' },
-  { icon: Users, number: '200+', label: 'Happy Families' },
+  { icon: Camera, number: '6500+', label: 'Sessions Completed' },
+  { icon: Users, number: '2000+', label: 'Happy Families' },
   { icon: Award, number: '9+', label: 'Years Experience' },
   { icon: Heart, number: '100%', label: 'Client Satisfaction' },
 ];
@@ -156,7 +156,7 @@ export default function About() {
               </div>
               {/* Landscape 2 (bottom right) */}
               <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden shadow-xl">
-                <Image src="/images/Baby/BabyShoot.jpg" alt="Studio Baby Session" fill className="object-cover" style={{ minHeight: '50%' }} />
+                <Image src="/images/Baby/Baby32.jpg" alt="Studio Baby Session" fill className="object-cover" style={{ minHeight: '50%' }} />
               </div>
             </div>
           </div>
